@@ -5,20 +5,23 @@
 		{ "path": "./tsconfig.node.json" }
 	],
 	"compilerOptions": {
-		"baseUrl": "./",
+		/* Aliases */
+		"baseUrl": ".",
 		"paths": {
-			"@app/*": ["src/app/*"],
-			"@assets/*": ["/src/assets/*"],
-			"@components/*": ["src/components/*"],
-			"@features/*": ["src/features/*"],
-			"@hooks/*": ["src/hooks/*"],
-			"@pages/*": ["src/pages/*"],
-			"@processes/*": ["src/processes/*"],
-			"@shared/*": ["src/shared/*"],
-			"@utils/*": ["src/utils/*"],
-			"@widgets/*": ["src/widgets/*"],
-			"@services/*": ["src/services/*"],
-			"@config/*": ["src/config/*"],
+			"@/*": ["./src/*"],
+			"@components/*": ["./src/components/*"],
+			"@lib/*": ["./src/lib/*"],
+			"@app/*": ["./src/app/*"],
+			"@assets/*": ["./src/assets/*"],
+			"@features/*": ["./src/features/*"],
+			"@hooks/*": ["./src/hooks/*"],
+			"@pages/*": ["./src/pages/*"],
+			"@processes/*": ["./src/processes/*"],
+			"@shared/*": ["./src/shared/*"],
+			"@utils/*": ["./src/utils/*"],
+			"@widgets/*": ["./src/widgets/*"],
+			"@services/*": ["./src/services/*"],
+			"@config/*": ["./src/config/*"]
 		}
 	}
 }
