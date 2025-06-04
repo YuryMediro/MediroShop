@@ -1,8 +1,8 @@
 import axios, { type CreateAxiosDefaults } from 'axios'
 import { errorCatch, getContentType } from './api.helper'
-import { getAccessToken, removeFromStorage } from 'src/services/auth/auth-token.service'
-import { authService } from 'src/services/auth/auth.service'
 import { SERVER_URL } from '@config/api.config'
+import { getAccessToken, removeFromStorage } from '@/services/auth/auth-token.service'
+import { authService } from '@/services/auth/auth.service'
 
 
 const options: CreateAxiosDefaults = {
