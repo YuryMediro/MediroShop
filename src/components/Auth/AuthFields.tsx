@@ -9,6 +9,9 @@ import {
 } from '../ui/form-elements/Form'
 import { Input } from '../ui/form-elements/Input'
 import { validEmail } from '@/shared/regex'
+import { useVisible } from '@/hooks/useVisible'
+import { FaEye } from 'react-icons/fa'
+import s from './Auth.module.scss'
 
 interface AuthFieldsProps {
 	form: UseFormReturn<IAuthForm, any, IAuthForm>
@@ -21,6 +24,7 @@ export const AuthFields = ({
 	isPending,
 	isReg = false,
 }: AuthFieldsProps) => {
+	const passwordVisible = useVisible(false)
 	return (
 		<>
 			{isReg && (
@@ -77,12 +81,18 @@ export const AuthFields = ({
 					<FormItem>
 						<FormLabel>Password</FormLabel>
 						<FormControl>
-							<Input
-								placeholder='******'
-								type='password'
-								disabled={isPending}
-								{...field}
-							/>
+							<div className={s.inputPassword}>
+								<Input
+									placeholder='******'
+									type={passwordVisible.visible ? 'text' : 'password'}
+									disabled={isPending}
+									{...field}
+								/>
+								<FaEye
+									className={s.iconEye}
+									onClick={passwordVisible.handleOnClick}
+								/>
+							</div>
 						</FormControl>
 						<FormMessage />
 					</FormItem>
