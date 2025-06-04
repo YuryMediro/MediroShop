@@ -4,10 +4,10 @@ import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 export const Route = createRootRoute({
 	component: () => (
 		<>
-			<div>
+			{/* <div>
 				<Link to='/auth'>Auth</Link>
 				<Link to='/dashboard'>Dashboard</Link>
-			</div>
+			</div> */}
 			{/* <hr /> */}
 			<Outlet />
 			<TanStackRouterDevtools />

@@ -11,12 +11,19 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as IndexImport } from './routes/index'
 import { Route as TodoIndexImport } from './routes/todo/index'
 import { Route as DashboardIndexImport } from './routes/dashboard/index'
 import { Route as AuthIndexImport } from './routes/auth/index'
 import { Route as TodoTodoidImport } from './routes/todo/$todoid'
 
 // Create/Update Routes
+
+const IndexRoute = IndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const TodoIndexRoute = TodoIndexImport.update({
   id: '/todo/',
@@ -46,6 +53,13 @@ const TodoTodoidRoute = TodoTodoidImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
     '/todo/$todoid': {
       id: '/todo/$todoid'
       path: '/todo/$todoid'
@@ -80,6 +94,7 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/todo/$todoid': typeof TodoTodoidRoute
   '/auth': typeof AuthIndexRoute
   '/dashboard': typeof DashboardIndexRoute
@@ -87,6 +102,7 @@ export interface FileRoutesByFullPath {
 }
 
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/todo/$todoid': typeof TodoTodoidRoute
   '/auth': typeof AuthIndexRoute
   '/dashboard': typeof DashboardIndexRoute
@@ -95,6 +111,7 @@ export interface FileRoutesByTo {
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
+  '/': typeof IndexRoute
   '/todo/$todoid': typeof TodoTodoidRoute
   '/auth/': typeof AuthIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
@@ -103,14 +120,15 @@ export interface FileRoutesById {
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/todo/$todoid' | '/auth' | '/dashboard' | '/todo'
+  fullPaths: '/' | '/todo/$todoid' | '/auth' | '/dashboard' | '/todo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/todo/$todoid' | '/auth' | '/dashboard' | '/todo'
-  id: '__root__' | '/todo/$todoid' | '/auth/' | '/dashboard/' | '/todo/'
+  to: '/' | '/todo/$todoid' | '/auth' | '/dashboard' | '/todo'
+  id: '__root__' | '/' | '/todo/$todoid' | '/auth/' | '/dashboard/' | '/todo/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   TodoTodoidRoute: typeof TodoTodoidRoute
   AuthIndexRoute: typeof AuthIndexRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
@@ -118,6 +136,7 @@ export interface RootRouteChildren {
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   TodoTodoidRoute: TodoTodoidRoute,
   AuthIndexRoute: AuthIndexRoute,
   DashboardIndexRoute: DashboardIndexRoute,
@@ -134,11 +153,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
+        "/",
         "/todo/$todoid",
         "/auth/",
         "/dashboard/",
         "/todo/"
       ]
+    },
+    "/": {
+      "filePath": "index.ts"
     },
     "/todo/$todoid": {
       "filePath": "todo/$todoid.tsx"
