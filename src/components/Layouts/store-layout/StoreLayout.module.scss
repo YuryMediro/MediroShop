@@ -9,7 +9,6 @@
 
 		.header {
 			height: 70px;
-			padding-left: 16rem;
 			position: fixed;
 			top: 0;
 			bottom: 0;
@@ -29,7 +28,7 @@
 		}
 
 		main {
-			padding: 4.1rem 0 1.75rem 16rem;
+			padding: 4.1rem 0 0 0;
 			background-color: #ffffff;
 		}
 	}
@@ -37,5 +36,12 @@
 @media (min-width: 1024px) {
 	.wrapper .layout .sidebar {
 		display: flex;
+
+		.header {
+			padding-left: 16rem;
+		}
+	}
+	main {
+		padding: 4.1rem 0 1.75rem 16rem !important;
 	}
 }

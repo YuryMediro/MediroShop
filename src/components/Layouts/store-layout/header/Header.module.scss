@@ -19,9 +19,19 @@
 			gap: 1rem;
 
 			p {
+				display: none;
 				color: #64748b;
 				font-size: 1.1rem;
 				font-weight: 500;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			@media (min-width: 700px) {
+				p {
+					display: block;
+				}
 			}
 
 			img {
