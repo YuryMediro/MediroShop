@@ -13,9 +13,11 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as TodoIndexImport } from './routes/todo/index'
+import { Route as StoreIndexImport } from './routes/store/index'
 import { Route as DashboardIndexImport } from './routes/dashboard/index'
 import { Route as AuthIndexImport } from './routes/auth/index'
 import { Route as TodoTodoidImport } from './routes/todo/$todoid'
+import { Route as StoreStoreIdImport } from './routes/store/$storeId'
 
 // Create/Update Routes
 
@@ -28,6 +30,12 @@ const IndexRoute = IndexImport.update({
 const TodoIndexRoute = TodoIndexImport.update({
   id: '/todo/',
   path: '/todo/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const StoreIndexRoute = StoreIndexImport.update({
+  id: '/store/',
+  path: '/store/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -49,6 +57,12 @@ const TodoTodoidRoute = TodoTodoidImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const StoreStoreIdRoute = StoreStoreIdImport.update({
+  id: '/store/$storeId',
+  path: '/store/$storeId',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -58,6 +72,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/store/$storeId': {
+      id: '/store/$storeId'
+      path: '/store/$storeId'
+      fullPath: '/store/$storeId'
+      preLoaderRoute: typeof StoreStoreIdImport
       parentRoute: typeof rootRoute
     }
     '/todo/$todoid': {
@@ -81,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexImport
       parentRoute: typeof rootRoute
     }
+    '/store/': {
+      id: '/store/'
+      path: '/store'
+      fullPath: '/store'
+      preLoaderRoute: typeof StoreIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/todo/': {
       id: '/todo/'
       path: '/todo'
@@ -95,51 +123,83 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/store/$storeId': typeof StoreStoreIdRoute
   '/todo/$todoid': typeof TodoTodoidRoute
   '/auth': typeof AuthIndexRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/store': typeof StoreIndexRoute
   '/todo': typeof TodoIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/store/$storeId': typeof StoreStoreIdRoute
   '/todo/$todoid': typeof TodoTodoidRoute
   '/auth': typeof AuthIndexRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/store': typeof StoreIndexRoute
   '/todo': typeof TodoIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/store/$storeId': typeof StoreStoreIdRoute
   '/todo/$todoid': typeof TodoTodoidRoute
   '/auth/': typeof AuthIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/store/': typeof StoreIndexRoute
   '/todo/': typeof TodoIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/todo/$todoid' | '/auth' | '/dashboard' | '/todo'
+  fullPaths:
+    | '/'
+    | '/store/$storeId'
+    | '/todo/$todoid'
+    | '/auth'
+    | '/dashboard'
+    | '/store'
+    | '/todo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/todo/$todoid' | '/auth' | '/dashboard' | '/todo'
-  id: '__root__' | '/' | '/todo/$todoid' | '/auth/' | '/dashboard/' | '/todo/'
+  to:
+    | '/'
+    | '/store/$storeId'
+    | '/todo/$todoid'
+    | '/auth'
+    | '/dashboard'
+    | '/store'
+    | '/todo'
+  id:
+    | '__root__'
+    | '/'
+    | '/store/$storeId'
+    | '/todo/$todoid'
+    | '/auth/'
+    | '/dashboard/'
+    | '/store/'
+    | '/todo/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  StoreStoreIdRoute: typeof StoreStoreIdRoute
   TodoTodoidRoute: typeof TodoTodoidRoute
   AuthIndexRoute: typeof AuthIndexRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
+  StoreIndexRoute: typeof StoreIndexRoute
   TodoIndexRoute: typeof TodoIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  StoreStoreIdRoute: StoreStoreIdRoute,
   TodoTodoidRoute: TodoTodoidRoute,
   AuthIndexRoute: AuthIndexRoute,
   DashboardIndexRoute: DashboardIndexRoute,
+  StoreIndexRoute: StoreIndexRoute,
   TodoIndexRoute: TodoIndexRoute,
 }
 
@@ -154,14 +214,19 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/store/$storeId",
         "/todo/$todoid",
         "/auth/",
         "/dashboard/",
+        "/store/",
         "/todo/"
       ]
     },
     "/": {
       "filePath": "index.ts"
+    },
+    "/store/$storeId": {
+      "filePath": "store/$storeId.ts"
     },
     "/todo/$todoid": {
       "filePath": "todo/$todoid.tsx"
@@ -171,6 +236,9 @@ export const routeTree = rootRoute
     },
     "/dashboard/": {
       "filePath": "dashboard/index.ts"
+    },
+    "/store/": {
+      "filePath": "store/index.ts"
     },
     "/todo/": {
       "filePath": "todo/index.tsx"

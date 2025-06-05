@@ -1,0 +1,41 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+
+	.layout {
+		position: relative;
+		width: 100%;
+
+		.header {
+			height: 70px;
+			padding-left: 16rem;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			z-index: 49;
+		}
+
+		.sidebar {
+			display: none;
+			flex-direction: column;
+			height: 100%;
+			width: 16rem;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			z-index: 50;
+		}
+
+		main {
+			padding: 1.75rem 0 1.75rem 16rem;
+			background-color: #ffffff;
+		}
+	}
+}
+@media (min-width: 1024px) {
+	.wrapper .layout .sidebar {
+		display: flex;
+	}
+}
