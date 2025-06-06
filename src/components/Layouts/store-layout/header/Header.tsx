@@ -4,6 +4,7 @@ import s from './Header.module.scss'
 import { Link } from '@tanstack/react-router'
 import { Loader } from './Loader'
 import noImage from '@assets/no-user-image.png'
+import { StoreSwitcher } from './StoreSwitcher'
 
 export const Header = () => {
 	const { user, isLoading } = useProfile()
@@ -16,6 +17,7 @@ export const Header = () => {
 				) : (
 					user && (
 						<>
+							<StoreSwitcher items={user.stores} />
 							<Link to='/dashboard' className={s.link}>
 								<p>{user.name}</p>
 								<img

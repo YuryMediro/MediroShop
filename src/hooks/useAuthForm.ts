@@ -1,4 +1,3 @@
-import { DASHBOARD_URL } from '@/config/url.config'
 import { authService } from '@/services/auth/auth.service'
 import type { IAuthForm } from '@/shared/types/auth.interface'
 import { useMutation } from '@tanstack/react-query'
@@ -19,7 +18,7 @@ export function useAuthForm(isReg: boolean) {
 		onSuccess() {
 			form.reset()
 			toast.success('Успешная авторизация')
-			navigate({ to: DASHBOARD_URL.home() })
+			navigate({ to: '/dashboard' })
 		},
 		onError(error) {
 			if (error.message) {
