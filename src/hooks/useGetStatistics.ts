@@ -10,7 +10,7 @@ export const useGetStatistics = () => {
 		queryFn: () => statisticsService.getMain(storeId),
 	})
 	const { data: middle } = useQuery({
-		queryKey: ['get main statistics', storeId],
+		queryKey: ['get middle statistics', storeId],
 		queryFn: () => statisticsService.getMiddle(storeId),
 	})
 

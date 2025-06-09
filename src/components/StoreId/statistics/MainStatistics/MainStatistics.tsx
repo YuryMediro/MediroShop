@@ -5,6 +5,7 @@ import { LoaderStatistics } from './LoaderStatistics'
 
 export const MainStatistics = () => {
 	const { main, isLoading } = useGetStatistics()
+	console.log('Main data:', main)
 
 	return (
 		<div className={s.main}>

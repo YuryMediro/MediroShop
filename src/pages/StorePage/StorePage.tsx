@@ -8,7 +8,10 @@ export const StorePage = () => {
 			<Helmet>
 				<title>{`Управление магазином | ${SITE_NAME}`}</title>
 				<meta name='description' content={SITE_DESCRIPTION} />
-				<meta property='og:title' content={`Авторизация | ${SITE_NAME}`} />
+				<meta
+					property='og:title'
+					content={`Управление магазином  | ${SITE_NAME}`}
+				/>
 				<meta property='og:description' content={SITE_DESCRIPTION} />
 				{/* <link rel='canonical' href='https://yoursite.com/' /> */}
 			</Helmet>

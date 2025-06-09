@@ -1,0 +1,70 @@
+.middle {
+	display: grid;
+	gap: 1rem;
+	margin-top: 1.5rem;
+	grid-template-columns: repeat(1, 1fr);
+
+	@media (min-width: 1280px) {
+		grid-template-columns: repeat(7, 1fr);
+	}
+
+	.header {
+		display: flex;
+		flex-direction: column;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		padding: 1rem;
+
+		div {
+			font-size: 1.25rem;
+			font-weight: 500;
+			line-height: 1.4;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+	}
+
+	.monthlySales {
+		grid-column: span 1;
+
+		@media (min-width: 1280px) {
+			grid-column: span 4;
+		}
+	}
+
+	.lastUsers {
+		grid-column: span 1;
+
+		@media (min-width: 1280px) {
+			grid-column: span 3;
+		}
+
+		.user {
+			display: flex;
+			align-items: center;
+			margin-top: 1.25rem;
+
+			img {
+				border-radius: 9999px;
+			}
+
+			.info {
+				margin-left: 1rem;
+				font-size: 0.875rem;
+				color: #71717a;
+				line-height: 1.8;
+
+				.name {
+					font-weight: 500;
+					line-height: 1;
+					color: #000;
+				}
+			}
+
+			.total {
+				margin-left: auto;
+				font-weight: 500;
+			}
+		}
+	}
+}
