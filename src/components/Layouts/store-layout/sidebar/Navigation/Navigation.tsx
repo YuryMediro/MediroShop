@@ -63,6 +63,7 @@ export const Navigation = () => {
 					return (
 						<Link
 							to={route.link}
+							params={{ storeId }}
 							key={route.title}
 							className={cn(s.route, {
 								[s.active]: isActive,

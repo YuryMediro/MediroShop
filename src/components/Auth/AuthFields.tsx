@@ -34,7 +34,7 @@ export const AuthFields = ({
 					rules={{ required: 'Имя обязательно' }}
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Username</FormLabel>
+							<FormLabel>Имя пользователя</FormLabel>
 							<FormControl>
 								<Input
 									placeholder='Mediro'
@@ -57,7 +57,7 @@ export const AuthFields = ({
 				}}
 				render={({ field }) => (
 					<FormItem>
-						<FormLabel>Email</FormLabel>
+						<FormLabel>Почта</FormLabel>
 						<FormControl>
 							<Input
 								placeholder='example@exmaple.com'
@@ -79,7 +79,7 @@ export const AuthFields = ({
 				}}
 				render={({ field }) => (
 					<FormItem>
-						<FormLabel>Password</FormLabel>
+						<FormLabel>Пароль</FormLabel>
 						<FormControl>
 							<div className={s.inputPassword}>
 								<Input

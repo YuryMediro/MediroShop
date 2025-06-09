@@ -1,4 +1,4 @@
-import { useCreateStore } from '@/hooks/useStoreCreate'
+import { useCreateStore } from '@/hooks/stores/useStoreCreate'
 import type { IStoreCreate } from '@/shared/types/store.interface'
 import { useState, type PropsWithChildren } from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'

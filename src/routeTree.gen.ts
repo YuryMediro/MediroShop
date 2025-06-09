@@ -18,6 +18,7 @@ import { Route as DashboardIndexImport } from './routes/dashboard/index'
 import { Route as AuthIndexImport } from './routes/auth/index'
 import { Route as TodoTodoidImport } from './routes/todo/$todoid'
 import { Route as StoreStoreIdImport } from './routes/store/$storeId'
+import { Route as StoreStoreIdSettingsImport } from './routes/store/$storeId.settings'
 
 // Create/Update Routes
 
@@ -61,6 +62,12 @@ const StoreStoreIdRoute = StoreStoreIdImport.update({
   id: '/store/$storeId',
   path: '/store/$storeId',
   getParentRoute: () => rootRoute,
+} as any)
+
+const StoreStoreIdSettingsRoute = StoreStoreIdSettingsImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => StoreStoreIdRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -116,40 +123,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TodoIndexImport
       parentRoute: typeof rootRoute
     }
+    '/store/$storeId/settings': {
+      id: '/store/$storeId/settings'
+      path: '/settings'
+      fullPath: '/store/$storeId/settings'
+      preLoaderRoute: typeof StoreStoreIdSettingsImport
+      parentRoute: typeof StoreStoreIdImport
+    }
   }
 }
 
 // Create and export the route tree
 
+interface StoreStoreIdRouteChildren {
+  StoreStoreIdSettingsRoute: typeof StoreStoreIdSettingsRoute
+}
+
+const StoreStoreIdRouteChildren: StoreStoreIdRouteChildren = {
+  StoreStoreIdSettingsRoute: StoreStoreIdSettingsRoute,
+}
+
+const StoreStoreIdRouteWithChildren = StoreStoreIdRoute._addFileChildren(
+  StoreStoreIdRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/store/$storeId': typeof StoreStoreIdRoute
+  '/store/$storeId': typeof StoreStoreIdRouteWithChildren
   '/todo/$todoid': typeof TodoTodoidRoute
   '/auth': typeof AuthIndexRoute
   '/dashboard': typeof DashboardIndexRoute
   '/store': typeof StoreIndexRoute
   '/todo': typeof TodoIndexRoute
+  '/store/$storeId/settings': typeof StoreStoreIdSettingsRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/store/$storeId': typeof StoreStoreIdRoute
+  '/store/$storeId': typeof StoreStoreIdRouteWithChildren
   '/todo/$todoid': typeof TodoTodoidRoute
   '/auth': typeof AuthIndexRoute
   '/dashboard': typeof DashboardIndexRoute
   '/store': typeof StoreIndexRoute
   '/todo': typeof TodoIndexRoute
+  '/store/$storeId/settings': typeof StoreStoreIdSettingsRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/store/$storeId': typeof StoreStoreIdRoute
+  '/store/$storeId': typeof StoreStoreIdRouteWithChildren
   '/todo/$todoid': typeof TodoTodoidRoute
   '/auth/': typeof AuthIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/store/': typeof StoreIndexRoute
   '/todo/': typeof TodoIndexRoute
+  '/store/$storeId/settings': typeof StoreStoreIdSettingsRoute
 }
 
 export interface FileRouteTypes {
@@ -162,6 +191,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/store'
     | '/todo'
+    | '/store/$storeId/settings'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -171,6 +201,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/store'
     | '/todo'
+    | '/store/$storeId/settings'
   id:
     | '__root__'
     | '/'
@@ -180,12 +211,13 @@ export interface FileRouteTypes {
     | '/dashboard/'
     | '/store/'
     | '/todo/'
+    | '/store/$storeId/settings'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  StoreStoreIdRoute: typeof StoreStoreIdRoute
+  StoreStoreIdRoute: typeof StoreStoreIdRouteWithChildren
   TodoTodoidRoute: typeof TodoTodoidRoute
   AuthIndexRoute: typeof AuthIndexRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
@@ -195,7 +227,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  StoreStoreIdRoute: StoreStoreIdRoute,
+  StoreStoreIdRoute: StoreStoreIdRouteWithChildren,
   TodoTodoidRoute: TodoTodoidRoute,
   AuthIndexRoute: AuthIndexRoute,
   DashboardIndexRoute: DashboardIndexRoute,
@@ -226,7 +258,10 @@ export const routeTree = rootRoute
       "filePath": "index.ts"
     },
     "/store/$storeId": {
-      "filePath": "store/$storeId.ts"
+      "filePath": "store/$storeId.tsx",
+      "children": [
+        "/store/$storeId/settings"
+      ]
     },
     "/todo/$todoid": {
       "filePath": "todo/$todoid.tsx"
@@ -238,10 +273,14 @@ export const routeTree = rootRoute
       "filePath": "dashboard/index.ts"
     },
     "/store/": {
-      "filePath": "store/index.ts"
+      "filePath": "store/index.tsx"
     },
     "/todo/": {
       "filePath": "todo/index.tsx"
+    },
+    "/store/$storeId/settings": {
+      "filePath": "store/$storeId.settings.tsx",
+      "parent": "/store/$storeId"
     }
   }
 }

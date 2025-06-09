@@ -9,5 +9,6 @@ export const Route = createFileRoute('/store/')({
 			throw redirect({ to: '/auth' })
 		}
 	},
+	
 	component: StorePage,
 })
