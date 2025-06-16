@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import type { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown, ExternalLink, MoreHorizontal, Pencil } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export interface IProductColumn {
 	id: string
@@ -96,14 +97,18 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 				</DropdownMenuTrigger>
 				<DropdownMenuContent align='end'>
 					<DropdownMenuLabel>Действия</DropdownMenuLabel>
-					<DropdownMenuItem>
-						<ExternalLink className='size-4 mr-2' />
-						Страница с продуктами
-					</DropdownMenuItem>
-					<DropdownMenuItem>
-						<Pencil className='size-4 mr-2' />
-						Изменить
-					</DropdownMenuItem>
+					<Link>
+						<DropdownMenuItem>
+							<ExternalLink className='size-4 mr-2' />
+							Страница с продуктами
+						</DropdownMenuItem>
+					</Link>
+					<Link>
+						<DropdownMenuItem>
+							<Pencil className='size-4 mr-2' />
+							Изменить
+						</DropdownMenuItem>
+					</Link>
 				</DropdownMenuContent>
 			</DropdownMenu>
 		),

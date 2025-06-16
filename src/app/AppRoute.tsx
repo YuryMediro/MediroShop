@@ -1,6 +1,8 @@
 import StoreLayout from '@/components/Layouts/store-layout/StoreLayout'
 import { AuthPage } from '@/pages/AuthPage/AuthPage'
 import { HomePage } from '@/pages/HomePage/HomePage'
+import { CreateProductsPage } from '@/pages/StorePage/ProductsPage/CreateProductsPage/CreateProductsPage'
+import { ProductsPage } from '@/pages/StorePage/ProductsPage/ProductsPage'
 import { SettingsPage } from '@/pages/StorePage/SettingsPage/SettingsPage'
 import { StorePage } from '@/pages/StorePage/StorePage'
 import { getAccessToken } from '@/services/auth/auth-token.service'
@@ -46,6 +48,22 @@ export const AppRoute = () => {
 					element={
 						<StoreLayout>
 							<SettingsPage />
+						</StoreLayout>
+					}
+				/>
+				<Route
+					path='/store/:storeId/products'
+					element={
+						<StoreLayout>
+							<ProductsPage />
+						</StoreLayout>
+					}
+				/>
+				<Route
+					path='/store/:storeId/products/create'
+					element={
+						<StoreLayout>
+							<CreateProductsPage />
 						</StoreLayout>
 					}
 				/>

@@ -3,15 +3,14 @@ import s from '../Store.module.scss'
 import { Plus } from 'lucide-react'
 import { DataTable } from '@/components/ui/DataTable/DataTable'
 import { productColumns, type IProductColumn } from './ProductColumns'
-import { Link, useParams } from '@tanstack/react-router'
 import useGetProduct from '@/hooks/products/useGetProduct'
 import { DataTableLoading } from '@/components/ui/DataTable/DataTableLoading'
 import { STORE_URL } from '@/config/url.config'
+import { Link, useParams } from 'react-router-dom'
 
 export const Products = () => {
-	const { storeId } = useParams({ from: '/store/$storeId' })
-
-	const { products, isLoading } = useGetProduct()
+	const { storeId } = useParams()
+	const { products, isLoading } = useGetProduct(storeId!)
 
 	const formattedProducts: IProductColumn[] = products
 		? products.map(product => ({
@@ -58,4 +57,3 @@ export const Products = () => {
 		</div>
 	)
 }
-

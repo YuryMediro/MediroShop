@@ -1,28 +1,27 @@
 import { productService } from '@/services/product.service'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useNavigate, useParams } from '@tanstack/react-router'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
-export default function useDeleteProduct() {
+export default function useDeleteProduct(productId: string) {
 	const route = useNavigate()
-	const { storeId } = useParams({ from: '/store/$storeId' })
 
 	const queryClient = useQueryClient()
 
-	const {mutate: deleteProduct, isPending: isLoadingProduct} = useMutation({
+	const { mutate: deleteProduct, isPending: isLoadingDelete } = useMutation({
 		mutationKey: ['delete product'],
-		// mutationFn: () => productService.delete(productId),
-		onSuccess() {
+		mutationFn: () => productService.delete(productId),
+		onSuccess(store) {
 			queryClient.invalidateQueries({
 				queryKey: ['get products for store dashboard'],
 			})
 			toast.success('Товар удален')
-			// route({to: '/store/$storeId/products', params:{storeId: store.id}})
+			route(`/store/${store.id}/products`)
 		},
 		onError() {
 			toast.error('Ошибка при удаление товара')
 		},
 	})
 
-    return {deleteProduct, isLoadingProduct}
+	return { deleteProduct, isLoadingDelete }
 }

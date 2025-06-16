@@ -1,17 +1,20 @@
 import { productService } from '@/services/product.service'
 import type { IProductEdit } from '@/shared/types/product.interface'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useParams } from '@tanstack/react-router'
 import toast from 'react-hot-toast'
 
-export default function useUpdateProduct() {
-	// const { productId } = useParams({})
+export default function useUpdateProduct(productId: string) {
+	// const { productId } = useParams<{ productId: string }>()
 
 	const queryClient = useQueryClient()
 
+	// if (!productId) {
+	// 	throw new Error('productId не найден в URL')
+	// }
+
 	const { mutate: updateProduct, isPending: isLoadingUpdate } = useMutation({
 		mutationKey: ['update product'],
-		// mutationFn: (data: IProductEdit) => productService.update(data, productId),
+		mutationFn: (data: IProductEdit) => productService.update(data, productId),
 		onSuccess() {
 			queryClient.invalidateQueries({
 				queryKey: ['get products for store dashboard'],
