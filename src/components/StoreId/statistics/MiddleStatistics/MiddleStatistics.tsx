@@ -2,9 +2,11 @@ import { useGetStatistics } from '@/hooks/useGetStatistics'
 import s from './MiddleStatistics.module.scss'
 import { MonthlySales } from './MonthlySales'
 import { LastUsers } from './LastUsers'
+import { useParams } from 'react-router-dom'
 
 export default function MiddleStatistics() {
-	const { middle } = useGetStatistics()
+	const { storeId } = useParams()
+	const { middle } = useGetStatistics(storeId!)
 
 	return (
 		<div className={s.middle}>

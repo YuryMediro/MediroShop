@@ -1,4 +1,5 @@
-import { Store } from '@/components/StoreId/Store'
+import StoreLayout from '@/components/Layouts/store-layout/StoreLayout'
+import { StorePage } from '@/pages/StorePage/StorePage'
 import { getAccessToken } from '@/services/auth/auth-token.service'
 import { createFileRoute, redirect } from '@tanstack/react-router'
 
@@ -9,5 +10,11 @@ export const Route = createFileRoute('/store/$storeId')({
 			throw redirect({ to: '/auth' })
 		}
 	},
-	component: Store,
+	component: () => {
+		return (
+			<StoreLayout>
+				<StorePage />
+			</StoreLayout>
+		)
+	},
 })

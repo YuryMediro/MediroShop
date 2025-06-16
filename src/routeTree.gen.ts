@@ -12,11 +12,8 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
-import { Route as TodoIndexImport } from './routes/todo/index'
-import { Route as StoreIndexImport } from './routes/store/index'
 import { Route as DashboardIndexImport } from './routes/dashboard/index'
 import { Route as AuthIndexImport } from './routes/auth/index'
-import { Route as TodoTodoidImport } from './routes/todo/$todoid'
 import { Route as StoreStoreIdImport } from './routes/store/$storeId'
 import { Route as StoreStoreIdSettingsImport } from './routes/store/$storeId.settings'
 
@@ -25,18 +22,6 @@ import { Route as StoreStoreIdSettingsImport } from './routes/store/$storeId.set
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const TodoIndexRoute = TodoIndexImport.update({
-  id: '/todo/',
-  path: '/todo/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const StoreIndexRoute = StoreIndexImport.update({
-  id: '/store/',
-  path: '/store/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -49,12 +34,6 @@ const DashboardIndexRoute = DashboardIndexImport.update({
 const AuthIndexRoute = AuthIndexImport.update({
   id: '/auth/',
   path: '/auth/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const TodoTodoidRoute = TodoTodoidImport.update({
-  id: '/todo/$todoid',
-  path: '/todo/$todoid',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -88,13 +67,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StoreStoreIdImport
       parentRoute: typeof rootRoute
     }
-    '/todo/$todoid': {
-      id: '/todo/$todoid'
-      path: '/todo/$todoid'
-      fullPath: '/todo/$todoid'
-      preLoaderRoute: typeof TodoTodoidImport
-      parentRoute: typeof rootRoute
-    }
     '/auth/': {
       id: '/auth/'
       path: '/auth'
@@ -107,20 +79,6 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/store/': {
-      id: '/store/'
-      path: '/store'
-      fullPath: '/store'
-      preLoaderRoute: typeof StoreIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/todo/': {
-      id: '/todo/'
-      path: '/todo'
-      fullPath: '/todo'
-      preLoaderRoute: typeof TodoIndexImport
       parentRoute: typeof rootRoute
     }
     '/store/$storeId/settings': {
@@ -150,22 +108,16 @@ const StoreStoreIdRouteWithChildren = StoreStoreIdRoute._addFileChildren(
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/store/$storeId': typeof StoreStoreIdRouteWithChildren
-  '/todo/$todoid': typeof TodoTodoidRoute
   '/auth': typeof AuthIndexRoute
   '/dashboard': typeof DashboardIndexRoute
-  '/store': typeof StoreIndexRoute
-  '/todo': typeof TodoIndexRoute
   '/store/$storeId/settings': typeof StoreStoreIdSettingsRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/store/$storeId': typeof StoreStoreIdRouteWithChildren
-  '/todo/$todoid': typeof TodoTodoidRoute
   '/auth': typeof AuthIndexRoute
   '/dashboard': typeof DashboardIndexRoute
-  '/store': typeof StoreIndexRoute
-  '/todo': typeof TodoIndexRoute
   '/store/$storeId/settings': typeof StoreStoreIdSettingsRoute
 }
 
@@ -173,11 +125,8 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/store/$storeId': typeof StoreStoreIdRouteWithChildren
-  '/todo/$todoid': typeof TodoTodoidRoute
   '/auth/': typeof AuthIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
-  '/store/': typeof StoreIndexRoute
-  '/todo/': typeof TodoIndexRoute
   '/store/$storeId/settings': typeof StoreStoreIdSettingsRoute
 }
 
@@ -186,31 +135,22 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/store/$storeId'
-    | '/todo/$todoid'
     | '/auth'
     | '/dashboard'
-    | '/store'
-    | '/todo'
     | '/store/$storeId/settings'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/store/$storeId'
-    | '/todo/$todoid'
     | '/auth'
     | '/dashboard'
-    | '/store'
-    | '/todo'
     | '/store/$storeId/settings'
   id:
     | '__root__'
     | '/'
     | '/store/$storeId'
-    | '/todo/$todoid'
     | '/auth/'
     | '/dashboard/'
-    | '/store/'
-    | '/todo/'
     | '/store/$storeId/settings'
   fileRoutesById: FileRoutesById
 }
@@ -218,21 +158,15 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   StoreStoreIdRoute: typeof StoreStoreIdRouteWithChildren
-  TodoTodoidRoute: typeof TodoTodoidRoute
   AuthIndexRoute: typeof AuthIndexRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
-  StoreIndexRoute: typeof StoreIndexRoute
-  TodoIndexRoute: typeof TodoIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   StoreStoreIdRoute: StoreStoreIdRouteWithChildren,
-  TodoTodoidRoute: TodoTodoidRoute,
   AuthIndexRoute: AuthIndexRoute,
   DashboardIndexRoute: DashboardIndexRoute,
-  StoreIndexRoute: StoreIndexRoute,
-  TodoIndexRoute: TodoIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -247,11 +181,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/store/$storeId",
-        "/todo/$todoid",
         "/auth/",
-        "/dashboard/",
-        "/store/",
-        "/todo/"
+        "/dashboard/"
       ]
     },
     "/": {
@@ -263,20 +194,11 @@ export const routeTree = rootRoute
         "/store/$storeId/settings"
       ]
     },
-    "/todo/$todoid": {
-      "filePath": "todo/$todoid.tsx"
-    },
     "/auth/": {
       "filePath": "auth/index.ts"
     },
     "/dashboard/": {
       "filePath": "dashboard/index.ts"
-    },
-    "/store/": {
-      "filePath": "store/index.tsx"
-    },
-    "/todo/": {
-      "filePath": "todo/index.tsx"
     },
     "/store/$storeId/settings": {
       "filePath": "store/$storeId.settings.tsx",

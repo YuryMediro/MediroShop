@@ -1,10 +1,11 @@
 import { SITE_DESCRIPTION, SITE_NAME } from '@/constants/seo.constants'
-import { Link } from '@tanstack/react-router'
+// import { Link } from '@tanstack/react-router'
 import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
 
-interface HomePageProps {}
-
-export const HomePage = ({}: HomePageProps) => {
+export const HomePage = () => {
+	
+	
 	return (
 		<>
 			<Helmet>
@@ -21,6 +22,7 @@ export const HomePage = ({}: HomePageProps) => {
 			<div>
 				<Link to='/dashboard'>Dashboard</Link>
 			</div>
+			<div></div>
 		</>
 	)
 }

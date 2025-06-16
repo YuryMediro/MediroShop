@@ -15,9 +15,9 @@ import {
 	PopoverTrigger,
 } from '@/components/ui/popover'
 import type { IStore } from '@/shared/types/store.interface'
-import { useNavigate } from '@tanstack/react-router'
 import { ChevronsUpDown, Plus, StoreIcon } from 'lucide-react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 interface StoreSwitcherProps {
 	items: IStore[]
@@ -30,7 +30,7 @@ export const StoreSwitcher = ({ items }: StoreSwitcherProps) => {
 
 	const storeSelect = (store: IStore) => {
 		setIsOpen(false)
-		route({ to: '/store/$storeId', params: { storeId: store.id } })
+		route(`/store/${store.id}`)
 	}
 
 	return (

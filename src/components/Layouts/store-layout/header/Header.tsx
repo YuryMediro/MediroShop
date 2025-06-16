@@ -1,10 +1,10 @@
 import { useProfile } from '@/hooks/useProfile'
 import { MobileSidebar } from '../sidebar/MobileSidebar'
 import s from './Header.module.scss'
-import { Link } from '@tanstack/react-router'
 import { Loader } from './Loader'
 import noImage from '@assets/no-user-image.png'
 import { StoreSwitcher } from './StoreSwitcher'
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
 	const { user, isLoading } = useProfile()

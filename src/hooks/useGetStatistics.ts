@@ -1,9 +1,7 @@
 import { statisticsService } from '@/services/statistics.service'
 import { useQuery } from '@tanstack/react-query'
-import { useParams } from '@tanstack/react-router'
 
-export const useGetStatistics = () => {
-	const { storeId } = useParams({ from: '/store/$storeId' })
+export const useGetStatistics = (storeId:string) => {
 
 	const { data: main, isLoading } = useQuery({
 		queryKey: ['get main statistics', storeId],

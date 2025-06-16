@@ -2,9 +2,11 @@ import { useGetStatistics } from '@/hooks/useGetStatistics'
 import s from './MainStatistics.module.scss'
 import { MainStatisticsItem } from './MainStatisticsItem'
 import { LoaderStatistics } from './LoaderStatistics'
+import { useParams } from 'react-router-dom'
 
 export const MainStatistics = () => {
-	const { main, isLoading } = useGetStatistics()
+	const { storeId } = useParams()
+	const { main, isLoading } = useGetStatistics(storeId!)
 
 	return (
 		<div className={s.main}>

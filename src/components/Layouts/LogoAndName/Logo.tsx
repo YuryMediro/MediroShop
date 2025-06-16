@@ -1,7 +1,7 @@
 import { SITE_NAME } from '@/constants/seo.constants'
-import { Link } from '@tanstack/react-router'
 import logo from '@/assets/logo.svg'
 import s from './Logo.module.scss'
+import { Link } from 'react-router-dom'
 
 export const Logo = () => {
 	return (

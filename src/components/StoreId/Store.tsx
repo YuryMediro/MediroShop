@@ -1,5 +1,3 @@
-import { useParams } from '@tanstack/react-router'
-import StoreLayout from '../Layouts/store-layout/StoreLayout'
 import s from './Store.module.scss'
 import { MainStatistics } from './statistics/MainStatistics/MainStatistics'
 import MiddleStatistics from './statistics/MiddleStatistics/MiddleStatistics'
@@ -8,7 +6,6 @@ import { SITE_DESCRIPTION, SITE_NAME } from '@/constants/seo.constants'
 interface StoreProps {}
 
 export const Store = ({}: StoreProps) => {
-	const { storeId } = useParams({ from: '/store/$storeId' })
 	return (
 		<>
 			<Helmet>
@@ -21,14 +18,12 @@ export const Store = ({}: StoreProps) => {
 				<meta property='og:description' content={SITE_DESCRIPTION} />
 				{/* <link rel='canonical' href='https://yoursite.com/' /> */}
 			</Helmet>
-			<StoreLayout>
-				<div className={s.wrapper}>
-					Store id: {storeId}
-					<h2 className={s.title}>Статистика</h2>
-					<MainStatistics />
-					<MiddleStatistics />
-				</div>
-			</StoreLayout>
+
+			<div className={s.wrapper}>
+				<h2 className={s.title}>Статистика</h2>
+				<MainStatistics />
+				<MiddleStatistics />
+			</div>
 		</>
 	)
 }

@@ -2,11 +2,9 @@ import { storeService } from '@/services/store.service'
 import type { IStoreEdit } from '@/shared/types/store.interface'
 import { queryClient } from '@/utils/api/queryClient'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { useParams } from '@tanstack/react-router'
 import toast from 'react-hot-toast'
 
-export default function useUpdateStore() {
-	const { storeId } = useParams({ from: '/store/$storeId' })
+export default function useUpdateStore(storeId:string) {
 
 	const { data: store } = useQuery({
 		queryKey: ['store', storeId],

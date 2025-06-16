@@ -1,0 +1,41 @@
+.search {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem; 
+    padding-bottom: 1rem;
+}
+
+.table {
+    border-radius: 0.375rem; 
+    border: 1px solid #e5e7eb;
+}
+
+.loading {
+    max-width: 96rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    .heading {
+        height: 2rem;
+        width: 12rem; 
+    }
+
+    .search {
+        margin-top: 1.5rem; 
+        height: 2rem;
+        width: 18rem; 
+    }
+
+    .table {
+        margin-top: 1.5rem; 
+
+        .loader {
+            height: 520px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

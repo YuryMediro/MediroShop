@@ -1,8 +1,8 @@
 import { storeService } from '@/services/store.service'
 import type { IStoreCreate } from '@/shared/types/store.interface'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useNavigate } from '@tanstack/react-router'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 export function useCreateStore() {
 	const route = useNavigate()
@@ -17,7 +17,7 @@ export function useCreateStore() {
 				queryKey: ['profile'],
 			})
 			toast.success('Магазин создан')
-			route({ to: '/store/$storeId', params: { storeId: store.id } })
+			route(`/store/${store.id}`)
 		},
 		onError() {
 			toast.error('Ошибка при создании магазина')

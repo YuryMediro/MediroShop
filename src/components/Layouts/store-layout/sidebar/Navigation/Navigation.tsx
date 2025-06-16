@@ -1,4 +1,4 @@
-import { Link, useMatchRoute, useParams } from '@tanstack/react-router'
+// import { Link, useMatchRoute, useParams } from '@tanstack/react-router'
 import {
 	Album,
 	BarChart,
@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import s from './Navigation.module.scss'
 import { cn } from '@/shared/lib/utils'
+import { Link, useMatch, useParams } from 'react-router-dom'
 
 interface INavItem {
 	title: string
@@ -17,9 +18,10 @@ interface INavItem {
 	icon: LucideIcon
 }
 export const Navigation = () => {
-	const { storeId } = useParams({ from: '/store/$storeId' })
-	const matchRoute = useMatchRoute()
-
+	const { storeId } = useParams()
+	// const { storeId } = useParams({ from: '/store/$storeId' })
+	// const matchRoute = useMatchRoute()
+	const matchRoute = useMatch({ path: '/store/:storeId/*' })
 	const routes: INavItem[] = [
 		{
 			icon: BarChart,
@@ -55,15 +57,17 @@ export const Navigation = () => {
 	return (
 		<div className={s.wrapper}>
 			<div className={s.navigation}>
+				{/* <Link to={`/store/${storeId}/settings`}> Settings</Link> */}
 				{routes.map(route => {
-					const isActive = matchRoute({
-						to: route.link.replace(storeId, '$storeId'),
-						params: { storeId },
-					})
+					// const isActive = matchRoute({
+					// 	to: route.link.replace(storeId, '$storeId'),
+					// 	params: { storeId },
+					// })
+					const isActive = matchRoute?.pathname === route.link
 					return (
 						<Link
 							to={route.link}
-							params={{ storeId }}
+							// params={{ storeId }}
 							key={route.title}
 							className={cn(s.route, {
 								[s.active]: isActive,
