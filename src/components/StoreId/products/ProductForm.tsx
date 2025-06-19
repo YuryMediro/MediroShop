@@ -28,6 +28,7 @@ import {
 	SelectValue,
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
+import { ImageUpload } from '@/components/ui/imageUpload/ImageUpload'
 
 interface CreateProductProps {
 	product?: IProduct | null
@@ -89,7 +90,26 @@ export const ProductForm = ({
 			</div>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)}>
-					{/* Для загрузки картинок */}
+					<FormField
+						control={form.control}
+						name='images'
+						rules={{
+							required: 'Загрузите хотя бы одну картинку',
+						}}
+						render={({ field }) => (
+							<FormItem className='mt-4'>
+								<FormLabel>Картинки</FormLabel>
+								<FormControl>
+									<ImageUpload
+										isDisabled={isLoadingCreate || isLoadingUpdate}
+										onChange={field.onChange}
+										value={field.value}
+									/>
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
 					<div className={s.fields}>
 						<FormField
 							control={form.control}
@@ -126,9 +146,11 @@ export const ProductForm = ({
 									<FormControl>
 										<div>
 											<Input
+												type='price'
 												placeholder='Цена товара'
 												disabled={isLoadingCreate || isLoadingUpdate}
 												{...field}
+												onChange={e=> field.onChange(+e.target.value)}
 											/>
 										</div>
 									</FormControl>
@@ -139,7 +161,6 @@ export const ProductForm = ({
 					</div>
 					<div className={s.fields}>
 						<FormField
-							
 							control={form.control}
 							name='categoryId'
 							rules={{

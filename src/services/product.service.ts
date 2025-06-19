@@ -60,7 +60,7 @@ class ProductService {
 		const { data: createdProduct } = await axiosWithAuth<IProduct[]>({
 			url: API_URL.products(`/${storeId}`),
 			method: 'POST',
-			data,
+			data: data,
 		})
 		return createdProduct
 	}
