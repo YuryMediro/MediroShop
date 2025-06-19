@@ -4,13 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 
 export default function useUpdateProduct(productId: string) {
-	// const { productId } = useParams<{ productId: string }>()
-
 	const queryClient = useQueryClient()
-
-	// if (!productId) {
-	// 	throw new Error('productId не найден в URL')
-	// }
 
 	const { mutate: updateProduct, isPending: isLoadingUpdate } = useMutation({
 		mutationKey: ['update product'],

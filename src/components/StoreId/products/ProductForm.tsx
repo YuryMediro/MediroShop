@@ -44,7 +44,7 @@ export const ProductForm = ({
 	const { storeId } = useParams()
 	const { createProduct, isLoadingCreate } = useCreateProduct(storeId!)
 	const { updateProduct, isLoadingUpdate } = useUpdateProduct(product?.id!)
-	const { deleteProduct, isLoadingDelete } = useDeleteProduct(product?.id!)
+	const { deleteProduct, isLoadingDelete } = useDeleteProduct(product?.id!, storeId!)
 
 	const form = useForm<IProductEdit>({
 		mode: 'onChange',
@@ -150,7 +150,7 @@ export const ProductForm = ({
 												placeholder='Цена товара'
 												disabled={isLoadingCreate || isLoadingUpdate}
 												{...field}
-												onChange={e=> field.onChange(+e.target.value)}
+												onChange={e => field.onChange(+e.target.value)}
 											/>
 										</div>
 									</FormControl>
@@ -250,7 +250,7 @@ export const ProductForm = ({
 						variant='primary'
 						disabled={isLoadingCreate || isLoadingUpdate}
 					>
-						Создать
+						{product ? 'Изменить' : 'Создать '}
 					</Button>
 				</form>
 			</Form>

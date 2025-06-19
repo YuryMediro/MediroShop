@@ -19,6 +19,8 @@ export const Products = () => {
 				price: product.price.toLocaleString('ru-RU', {
 					style: 'currency',
 					currency: 'RUB',
+					minimumFractionDigits: 0,
+					maximumFractionDigits: 0,
 				}),
 				category: product.category.title,
 				color: product.color.value,

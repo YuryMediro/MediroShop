@@ -6,6 +6,7 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { STORE_URL } from '@/config/url.config'
 import type { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown, ExternalLink, MoreHorizontal, Pencil } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -98,13 +99,15 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 				<DropdownMenuContent align='end'>
 					<DropdownMenuLabel>Действия</DropdownMenuLabel>
 					<Link>
-						<DropdownMenuItem>
+						<DropdownMenuItem className='cursor-pointer'>
 							<ExternalLink className='size-4 mr-2' />
 							Страница с продуктами
 						</DropdownMenuItem>
 					</Link>
-					<Link>
-						<DropdownMenuItem>
+					<Link
+						to={STORE_URL.productEdit(row.original.storeId, row.original.id)}
+					>
+						<DropdownMenuItem className='cursor-pointer'>
 							<Pencil className='size-4 mr-2' />
 							Изменить
 						</DropdownMenuItem>

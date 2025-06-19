@@ -2,6 +2,7 @@ import StoreLayout from '@/components/Layouts/store-layout/StoreLayout'
 import { AuthPage } from '@/pages/AuthPage/AuthPage'
 import { HomePage } from '@/pages/HomePage/HomePage'
 import { CreateProductsPage } from '@/pages/StorePage/ProductsPage/CreateProductsPage/CreateProductsPage'
+import { ProductEditPage } from '@/pages/StorePage/ProductsPage/ProductEditPage/ProductEditPage'
 import { ProductsPage } from '@/pages/StorePage/ProductsPage/ProductsPage'
 import { SettingsPage } from '@/pages/StorePage/SettingsPage/SettingsPage'
 import { StorePage } from '@/pages/StorePage/StorePage'
@@ -64,6 +65,14 @@ export const AppRoute = () => {
 					element={
 						<StoreLayout>
 							<CreateProductsPage />
+						</StoreLayout>
+					}
+				/>
+				<Route
+					path='/store/:storeId/products/:productId'
+					element={
+						<StoreLayout>
+							<ProductEditPage />
 						</StoreLayout>
 					}
 				/>
