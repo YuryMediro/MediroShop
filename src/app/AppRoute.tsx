@@ -1,6 +1,9 @@
 import StoreLayout from '@/components/Layouts/store-layout/StoreLayout'
 import { AuthPage } from '@/pages/AuthPage/AuthPage'
 import { HomePage } from '@/pages/HomePage/HomePage'
+import { ColorEditPage } from '@/pages/StorePage/ColorsPage/ColorEditPage/ColorEditPage'
+import { ColorPage } from '@/pages/StorePage/ColorsPage/ColorsPage'
+import { CreateColorsPage } from '@/pages/StorePage/ColorsPage/CreateColorPage/CreateColorPage'
 import { CreateProductsPage } from '@/pages/StorePage/ProductsPage/CreateProductsPage/CreateProductsPage'
 import { ProductEditPage } from '@/pages/StorePage/ProductsPage/ProductEditPage/ProductEditPage'
 import { ProductsPage } from '@/pages/StorePage/ProductsPage/ProductsPage'
@@ -73,6 +76,30 @@ export const AppRoute = () => {
 					element={
 						<StoreLayout>
 							<ProductEditPage />
+						</StoreLayout>
+					}
+				/>
+				<Route
+					path='/store/:storeId/colors'
+					element={
+						<StoreLayout>
+							<ColorPage />
+						</StoreLayout>
+					}
+				/>
+				<Route
+					path='/store/:storeId/colors/create'
+					element={
+						<StoreLayout>
+							<CreateColorsPage />
+						</StoreLayout>
+					}
+				/>
+				<Route
+					path='/store/:storeId/colors/:colorId'
+					element={
+						<StoreLayout>
+							<ColorEditPage />
 						</StoreLayout>
 					}
 				/>

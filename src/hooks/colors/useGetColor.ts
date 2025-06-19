@@ -6,6 +6,5 @@ export const useGetColor = (storeId: string) => {
 		queryKey: ['get colors for store dashboard'],
 		queryFn: () => colorService.getByStoreId(storeId),
 	})
-
 	return { colors, isLoading }
 }
