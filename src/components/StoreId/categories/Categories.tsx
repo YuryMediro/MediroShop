@@ -13,7 +13,7 @@ export const Categories = () => {
 	const { storeId } = useParams()
 	const { categories, isLoading } = useGetCategories(storeId!)
 
-	const formattedProducts: ICategoryColumn[] = categories
+	const formattedCategories: ICategoryColumn[] = categories
 		? categories.map(category => ({
 				id: category.id,
 				createdAt: formatDate(category.createdAt),
@@ -45,7 +45,7 @@ export const Categories = () => {
 					<div className={s.table}>
 						<DataTable
 							columns={categoryColumns}
-							data={formattedProducts}
+							data={formattedCategories}
 							filterKey='title'
 						/>
 					</div>

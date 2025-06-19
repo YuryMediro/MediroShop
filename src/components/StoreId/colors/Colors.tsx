@@ -14,7 +14,7 @@ export const Colors = () => {
 	const { storeId } = useParams()
 	const { colors, isLoading } = useGetColor(storeId!)
 
-	const formattedProducts: IColor[] = colors
+	const formattedColors: IColor[] = colors
 		? colors.map(color => ({
 				id: color.id,
 				name: color.name,
@@ -46,7 +46,7 @@ export const Colors = () => {
 					<div className={s.table}>
 						<DataTable
 							columns={colorColumns}
-							data={formattedProducts}
+							data={formattedColors}
 							filterKey='name'
 						/>
 					</div>

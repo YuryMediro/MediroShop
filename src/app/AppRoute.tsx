@@ -10,6 +10,7 @@ import { CreateColorsPage } from '@/pages/StorePage/ColorsPage/CreateColorPage/C
 import { CreateProductsPage } from '@/pages/StorePage/ProductsPage/CreateProductsPage/CreateProductsPage'
 import { ProductEditPage } from '@/pages/StorePage/ProductsPage/ProductEditPage/ProductEditPage'
 import { ProductsPage } from '@/pages/StorePage/ProductsPage/ProductsPage'
+import { ReviewsPage } from '@/pages/StorePage/ReviewsPage/ReviewsPage'
 import { SettingsPage } from '@/pages/StorePage/SettingsPage/SettingsPage'
 import { StorePage } from '@/pages/StorePage/StorePage'
 import { getAccessToken } from '@/services/auth/auth-token.service'
@@ -127,6 +128,14 @@ export const AppRoute = () => {
 					element={
 						<StoreLayout>
 							<CategoriesEditPage />
+						</StoreLayout>
+					}
+				/>
+				<Route
+					path='/store/:storeId/reviews'
+					element={
+						<StoreLayout>
+							<ReviewsPage />
 						</StoreLayout>
 					}
 				/>
