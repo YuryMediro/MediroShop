@@ -1,0 +1,21 @@
+.wrapper {
+	display: none;
+	align-items: center;
+	gap: 0.5rem;
+	margin-left: auto;
+
+	.avatar {
+		border-radius: 9999px;
+	}
+
+	.icon {
+		width: 1rem;
+		height: 1rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.wrapper {
+		display: flex;
+	}
+}

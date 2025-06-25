@@ -1,3 +1,4 @@
+import MainLayout from '@/components/Layouts/main-layout/MainLayout'
 import StoreLayout from '@/components/Layouts/store-layout/StoreLayout'
 import { AuthPage } from '@/pages/AuthPage/AuthPage'
 import { HomePage } from '@/pages/HomePage/HomePage'
@@ -13,6 +14,7 @@ import { ProductsPage } from '@/pages/StorePage/ProductsPage/ProductsPage'
 import { ReviewsPage } from '@/pages/StorePage/ReviewsPage/ReviewsPage'
 import { SettingsPage } from '@/pages/StorePage/SettingsPage/SettingsPage'
 import { StorePage } from '@/pages/StorePage/StorePage'
+import { ThanksPage } from '@/pages/ThanksPage/ThanksPage'
 import { getAccessToken } from '@/services/auth/auth-token.service'
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
 
@@ -139,9 +141,24 @@ export const AppRoute = () => {
 						</StoreLayout>
 					}
 				/>
+				<Route
+					path='/thanks'
+					element={
+						<MainLayout>
+							<ThanksPage />
+						</MainLayout>
+					}
+				/>
 			</Route>
 
-			<Route index element={<HomePage />} />
+			<Route
+				index
+				element={
+					<MainLayout>
+						<HomePage />
+					</MainLayout>
+				}
+			/>
 		</Routes>
 	)
 }

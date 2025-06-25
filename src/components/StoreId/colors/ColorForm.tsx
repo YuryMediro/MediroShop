@@ -104,7 +104,7 @@ export const ColorForm = ({ color }: CreateColorProps) => {
 									<FormControl>
 										<div>
 											<Input
-												type='value'
+												type='color'
 												placeholder='Значение товара'
 												disabled={isLoadingCreate || isLoadingUpdate}
 												{...field}

@@ -1,0 +1,16 @@
+.wrapper {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	margin-top: 4rem;
+
+	.footer {
+		margin-left: auto;
+		margin-right: auto;
+		padding-top: 1.25rem;
+		padding-bottom: 1.25rem;
+		text-align: center;
+
+		> a > span {
+			color: #2563eb;
+		}
+	}
+}

@@ -1,11 +1,8 @@
+import { Home } from '@/components/Home/Home'
 import { SITE_DESCRIPTION, SITE_NAME } from '@/constants/seo.constants'
-// import { Link } from '@tanstack/react-router'
 import { Helmet } from 'react-helmet-async'
-import { Link } from 'react-router-dom'
 
 export const HomePage = () => {
-	
-	
 	return (
 		<>
 			<Helmet>
@@ -15,14 +12,7 @@ export const HomePage = () => {
 				<meta property='og:description' content={SITE_DESCRIPTION} />
 				{/* <link rel='canonical' href='https://yoursite.com/' /> */}
 			</Helmet>
-			<div>Главная страница</div>
-			<div>
-				<Link to='/auth'>Auth</Link>
-			</div>
-			<div>
-				<Link to='/dashboard'>Dashboard</Link>
-			</div>
-			<div></div>
+			<Home />
 		</>
 	)
 }

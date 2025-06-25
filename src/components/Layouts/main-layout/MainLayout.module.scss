@@ -1,0 +1,19 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+
+	.layout {
+		flex: 1 1 auto;
+
+		> div {
+			margin-left: 1.25rem;
+			margin-right: 1.25rem;
+
+			@media (min-width: 1024px) {
+				margin-left: 3.5rem;
+				margin-right: 3.5rem;
+			}
+		}
+	}
+}
