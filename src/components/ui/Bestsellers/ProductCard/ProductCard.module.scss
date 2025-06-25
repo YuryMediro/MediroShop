@@ -1,0 +1,32 @@
+.card {
+	background-color: #fff;
+
+	display: flex;
+	flex-direction: column;
+
+	img {
+		border-radius: 0.5rem;
+	}
+
+	.title {
+		margin-top: 1rem;
+		font-weight: 600;
+		color: #374151;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: wrap;
+	}
+
+	.category {
+		margin-top: 0.25rem;
+		font-size: 0.875rem;
+		color: #6b7280;
+	}
+
+	.price {
+		margin-top: 0.25rem;
+		font-weight: 500;
+		font-size: 0.875rem;
+		color: #111827;
+	}
+}
