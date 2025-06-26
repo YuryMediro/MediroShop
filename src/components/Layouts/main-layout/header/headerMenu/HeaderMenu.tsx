@@ -20,8 +20,9 @@ export const HeaderMenu = () => {
 				<Loader />
 			) : user ? (
 				<>
-					<Button variant='ghost'>Избранное</Button>
-
+					<Link to='/favorites'>
+						<Button variant='ghost'>Избранное</Button>
+					</Link>
 					{user.stores.length ? (
 						<Link to={`/store/${user.stores[0].id}`}>
 							<Button variant='ghost'>Мои магазины</Button>

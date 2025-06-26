@@ -2,7 +2,9 @@ import MainLayout from '@/components/Layouts/main-layout/MainLayout'
 import StoreLayout from '@/components/Layouts/store-layout/StoreLayout'
 import { AuthPage } from '@/pages/AuthPage/AuthPage'
 import { CategoryIdPage } from '@/pages/CategoryIdPage/CategoryIdPage'
+import DashboardPage from '@/pages/DashboardPage/DashboardPage'
 import { ExplorerPage } from '@/pages/ExplorerPage/ExplorerPage'
+import { FavoritesPage } from '@/pages/FavoritesPage/FavoritesPage'
 import { HomePage } from '@/pages/HomePage/HomePage'
 import { CategoriesEditPage } from '@/pages/StorePage/CategoriesPage/CategoriesEditPage/CategoriesEditPage'
 import { CategoriesPage } from '@/pages/StorePage/CategoriesPage/CategoriesPage'
@@ -151,6 +153,14 @@ export const AppRoute = () => {
 						</MainLayout>
 					}
 				/>
+				<Route
+					path='/favorites'
+					element={
+						<MainLayout>
+							<FavoritesPage />
+						</MainLayout>
+					}
+				/>
 			</Route>
 
 			<Route
@@ -174,6 +184,15 @@ export const AppRoute = () => {
 				element={
 					<MainLayout>
 						<ExplorerPage />
+					</MainLayout>
+				}
+			/>
+
+			<Route
+				path='/dashboard'
+				element={
+					<MainLayout>
+						<DashboardPage />
 					</MainLayout>
 				}
 			/>
