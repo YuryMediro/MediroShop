@@ -2,6 +2,7 @@ import MainLayout from '@/components/Layouts/main-layout/MainLayout'
 import StoreLayout from '@/components/Layouts/store-layout/StoreLayout'
 import { AuthPage } from '@/pages/AuthPage/AuthPage'
 import { CategoryIdPage } from '@/pages/CategoryIdPage/CategoryIdPage'
+import { ExplorerPage } from '@/pages/ExplorerPage/ExplorerPage'
 import { HomePage } from '@/pages/HomePage/HomePage'
 import { CategoriesEditPage } from '@/pages/StorePage/CategoriesPage/CategoriesEditPage/CategoriesEditPage'
 import { CategoriesPage } from '@/pages/StorePage/CategoriesPage/CategoriesPage'
@@ -165,6 +166,14 @@ export const AppRoute = () => {
 				element={
 					<MainLayout>
 						<CategoryIdPage />
+					</MainLayout>
+				}
+			/>
+			<Route
+				path='/explorer'
+				element={
+					<MainLayout>
+						<ExplorerPage />
 					</MainLayout>
 				}
 			/>

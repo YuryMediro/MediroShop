@@ -1,19 +1,27 @@
-import type { IProduct } from '@/shared/types/product.interface'
 import { HomeDescription } from './HomeDescription/HomeDescription'
 import { Catalog } from '../ui/Catalog/Catalog'
+import useGetProductMostPopular from '@/hooks/products/useGetProductMostPopular'
+import { LoaderStatistics } from '../StoreId/statistics/MainStatistics/LoaderStatistics'
 
-interface HomeProps {
-	products: IProduct[]
+
+export const Home = () => {
+	const { data } = useGetProductMostPopular()
+
+if (!data) {
+	return (
+		<div className='flex justify-center items-center  h-screen'>
+			<LoaderStatistics />
+		</div>
+	)
 }
 
-export const Home = ({ products }: HomeProps) => {
 	return (
 		<>
 			<HomeDescription />
 			<Catalog
 				title='Хиты продаж'
 				description='Самые популярный товары нашего магазина'
-				products={products}
+				products={data}
 				link='/'
 			/>
 		</>

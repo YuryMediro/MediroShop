@@ -13,9 +13,9 @@ export const HeaderMenu = () => {
 	return (
 		<div className={s.wrapper}>
 			<Cart />
-
-			<Button variant='ghost'>Каталог</Button>
-
+			<Link to='/explorer'>
+				<Button variant='ghost'>Каталог</Button>
+			</Link>
 			{isLoading ? (
 				<Loader />
 			) : user ? (
