@@ -1,19 +1,21 @@
 import type { IProduct } from '@/shared/types/product.interface'
-import s from './Bestsellers.module.scss'
+import s from './Catalog.module.scss'
 import { ProductCard } from './ProductCard/ProductCard'
 import { Link } from 'react-router-dom'
 
-interface BestsellersProps {
+interface CatalogProps {
 	title: string
 	description?: string
 	products: IProduct[]
+	link?: string
 }
 
-export const Bestsellers = ({
+export const Catalog = ({
 	title,
 	description,
 	products,
-}: BestsellersProps) => {
+	link,
+}: CatalogProps) => {
 	return (
 		<div className={s.wrapper}>
 			<div className={s.header}>
@@ -21,7 +23,11 @@ export const Bestsellers = ({
 					<h1>{title}</h1>
 					{description && <p>{description}</p>}
 				</div>
-				<Link className={s.link} to='/'>Узнать больше</Link>
+				{link && (
+					<Link className={s.link} to='/'>
+						Узнать больше
+					</Link>
+				)}
 			</div>
 			<div className={s.catalog}>
 				<div className={s.products}>
