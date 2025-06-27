@@ -24,7 +24,7 @@ export const Catalog = ({
 					{description && <p>{description}</p>}
 				</div>
 				{link && (
-					<Link className={s.link} to='/'>
+					<Link className={s.link} to='/explorer'>
 						Узнать больше
 					</Link>
 				)}

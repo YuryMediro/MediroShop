@@ -22,7 +22,7 @@ if (!data) {
 				title='Хиты продаж'
 				description='Самые популярный товары нашего магазина'
 				products={data}
-				link='/'
+				link='/explorer'
 			/>
 		</>
 	)

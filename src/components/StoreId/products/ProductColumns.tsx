@@ -98,7 +98,7 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 				</DropdownMenuTrigger>
 				<DropdownMenuContent align='end'>
 					<DropdownMenuLabel>Действия</DropdownMenuLabel>
-					<Link>
+					<Link to={`/product/${row.original.id}`} target='_blank'>
 						<DropdownMenuItem className='cursor-pointer'>
 							<ExternalLink className='size-4 mr-2' />
 							Страница с продуктами

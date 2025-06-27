@@ -1,0 +1,48 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+
+	hr {
+		border: none;
+		border-top: 1px solid #e5e7eb;
+	}
+
+	.title {
+		font-size: 1.875rem;
+		line-height: 2.25rem;
+		font-weight: 700;
+	}
+	.price {
+		font-size: 1.5rem;
+		line-height: 2rem;
+	}
+	.description {
+		font-size: 0.875rem;
+		color: #9ca3af;
+	}
+
+	.label {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+
+		h3 {
+			font-weight: 600;
+
+			span {
+				font-weight: 400;
+			}
+		}
+
+		.color {
+			width: 1.5rem;
+			height: 1.5rem;
+			border-radius: 9999px;
+		}
+	}
+	.buttons {
+		display: flex;
+		gap: 0.5rem;
+	}
+}

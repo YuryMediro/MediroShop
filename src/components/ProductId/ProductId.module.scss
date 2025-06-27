@@ -1,0 +1,33 @@
+.wrapper {
+	max-width: 1280px;
+	margin-left: auto;
+	margin-right: auto;
+
+	.content {
+		padding: 2.5rem 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.75rem;
+
+		.info {
+			display: grid;
+			grid-template-columns: repeat(1, minmax(0, 1fr));
+			align-items: start;
+			gap: 2rem;
+			justify-items: center;
+
+			@media (min-width: 840px) {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+		}
+		@media (min-width: 1024px) {
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+
+		@media (min-width: 640px) {
+			padding-left: 1.5rem;
+			padding-right: 1.5rem;
+		}
+	}
+}

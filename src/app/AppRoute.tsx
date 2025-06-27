@@ -6,6 +6,7 @@ import DashboardPage from '@/pages/DashboardPage/DashboardPage'
 import { ExplorerPage } from '@/pages/ExplorerPage/ExplorerPage'
 import { FavoritesPage } from '@/pages/FavoritesPage/FavoritesPage'
 import { HomePage } from '@/pages/HomePage/HomePage'
+import { ProductsPageId } from '@/pages/ProductsPageId/ProductsPageId'
 import { CategoriesEditPage } from '@/pages/StorePage/CategoriesPage/CategoriesEditPage/CategoriesEditPage'
 import { CategoriesPage } from '@/pages/StorePage/CategoriesPage/CategoriesPage'
 import { CreateCategoriesPage } from '@/pages/StorePage/CategoriesPage/CreateCategoriesPage/CreateCategoriesPage'
@@ -184,6 +185,14 @@ export const AppRoute = () => {
 				element={
 					<MainLayout>
 						<ExplorerPage />
+					</MainLayout>
+				}
+			/>
+			<Route
+				path='/product/:productId'
+				element={
+					<MainLayout>
+						<ProductsPageId />
 					</MainLayout>
 				}
 			/>
