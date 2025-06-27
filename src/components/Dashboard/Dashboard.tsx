@@ -6,8 +6,14 @@ import s from './Dashboard.module.scss'
 import { Button } from '../ui/Button'
 import { LogOut } from 'lucide-react'
 import { DataTable } from '../ui/DataTable/DataTable'
+import { orderColumns, type IOrderColumns } from './OrderColumns'
+import { useProfile } from '@/hooks/useProfile'
+import { EnumOrderStatus } from '@/shared/types/order.interface'
+import { formatDate } from '@/utils/date/form-date'
 export const Dashboard = () => {
 	const location = useLocation()
+
+	const { user } = useProfile()
 
 	const { logout } = useLogout()
 
@@ -23,6 +29,20 @@ export const Dashboard = () => {
 		}
 	}, [location.search])
 
+	const formattedOrders: IOrderColumns[] = user
+		? user.orders.map(order => ({
+				createdAt: formatDate(order.createdAt),
+				status:
+					order.status === EnumOrderStatus.PENDING ? 'В ожидании' : 'Оплачен',
+				total: order.total.toLocaleString('ru-RU', {
+					style: 'currency',
+					currency: 'RUB',
+					minimumFractionDigits: 0,
+					maximumFractionDigits: 0,
+				}),
+			}))
+		: []
+
 	return (
 		<div className={s.wrapper}>
 			<div className={s.header}>
@@ -32,7 +52,7 @@ export const Dashboard = () => {
 					Выйти из аккаунта
 				</Button>
 			</div>
-			<DataTable columns={[]} data={[]}/>
+			<DataTable columns={orderColumns} data={formattedOrders} />
 		</div>
 	)
 }
