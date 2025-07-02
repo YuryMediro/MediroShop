@@ -1,7 +1,8 @@
 import type { IProduct } from '@/shared/types/product.interface'
 import s from './ProductInfo.module.scss'
 import { getReviewEnding } from '@/utils/review/getReviewEnding'
-import { Button } from '@/components/ui/Button'
+import { FavoriteButton } from './Buttons/FavoriteButton'
+import { AddToCartButton } from './Buttons/AddToCartButton'
 
 interface ProductInfoProps {
 	product: IProduct
@@ -50,8 +51,8 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
 			</div>
 			<hr />
 			<div className={s.buttons}>
-				<Button variant='primary'></Button>
-				<Button variant='primary'></Button>
+				<AddToCartButton product={product} />
+				<FavoriteButton product={product} />
 			</div>
 		</div>
 	)
