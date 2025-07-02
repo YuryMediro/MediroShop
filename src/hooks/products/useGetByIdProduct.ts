@@ -6,13 +6,10 @@ import { useParams } from 'react-router-dom'
 export default function useGetByIdProduct() {
 	const { productId } = useParams<{ productId: string }>()
 
-	if (!productId) {
-		throw new Error('productId не найден в URL')
-	}
-
 	const { data: product } = useQuery<IProduct>({
-		queryKey: ['get products byId'],
-		queryFn: () => productService.getById(productId),
+		queryKey: ['get products byId' , productId],
+		queryFn: () => productService.getById(productId!),
+		enabled: !!productId,
 	})
 
 	return { product }

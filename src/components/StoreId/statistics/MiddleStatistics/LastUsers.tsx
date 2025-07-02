@@ -16,7 +16,7 @@ export const LastUsers = ({ data }: LastUsersProps) => {
 			<CardContent>
 				{data.length ? (
 					data.map(user => (
-						<div className={s.user}>
+						<div className={s.user} key={user.id}>
 							<img
 								src={user.picture}
 								alt={user.name}

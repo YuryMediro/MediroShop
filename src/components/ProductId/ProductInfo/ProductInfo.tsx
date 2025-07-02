@@ -9,10 +9,12 @@ interface ProductInfoProps {
 
 export const ProductInfo = ({ product }: ProductInfoProps) => {
 	const rating =
-		Math.round(
-			product.reviews.reduce((acc, item) => acc + item.rating, 0) /
-				product.reviews.length
-		) || 0
+		product.reviews.length > 0
+			? (
+					product.reviews.reduce((acc, item) => acc + item.rating, 0) /
+					product.reviews.length
+				).toFixed(1)
+			: '0.0'
 
 	return (
 		<div className={s.wrapper}>
@@ -43,7 +45,7 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
 			<div className={s.label}>
 				<h3>Средний рейтинг: </h3>
 				<div className='text-sm'>
-					⭐ {rating.toFixed(1)} | {getReviewEnding(product.reviews.length)}
+					⭐ {rating} | {getReviewEnding(product.reviews.length)}
 				</div>
 			</div>
 			<hr />
