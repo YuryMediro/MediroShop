@@ -6,7 +6,7 @@ import { CartItem } from './CartItem'
 import useGetCart from '@/hooks/cart/useGetCartById'
 
 export const Cart = () => {
-	const { carts } = useGetCart()
+	const { carts, totalPrice } = useGetCart()
 
 	return (
 		<Sheet>
@@ -26,8 +26,18 @@ export const Cart = () => {
 				</div>
 				{carts.length > 0 && (
 					<>
-						<div className={s.total}>Итого к оплате:</div>
-						<Button className={s.button} variant='primary'>Перейти к оплате</Button>
+						<div className={s.total}>
+							Итого к оплате:{' '}
+							{totalPrice?.toLocaleString('ru-RU', {
+								style: 'currency',
+								currency: 'RUB',
+								minimumFractionDigits: 0,
+								maximumFractionDigits: 0,
+							})}
+						</div>
+						<Button className={s.button} variant='primary'>
+							Перейти к оплате
+						</Button>
 					</>
 				)}
 			</SheetContent>

@@ -1,4 +1,4 @@
-import type { IProduct } from "./product.interface"
+import type { IProduct } from './product.interface'
 
 export interface ICartItem {
 	id: string
@@ -10,3 +10,6 @@ export interface ICartItem {
 	createdAt: string
 	updatedAt: string
 }
+
+export interface ICartEdit
+	extends Pick<ICartItem, 'quantity'>{}
