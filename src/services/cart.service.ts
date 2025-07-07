@@ -19,6 +19,14 @@ class CartService {
 		})
 		return updateCart
 	}
+
+    async delete(id: string) {
+        const {data} = await axiosWithAuth<ICartItem>({
+            url: API_URL.carts(`/${id}`),
+            method: 'DELETE'
+        })
+        return {data}
+    }
 }
 
 export const cartService = new CartService()

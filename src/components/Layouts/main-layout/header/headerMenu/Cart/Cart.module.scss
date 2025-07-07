@@ -36,12 +36,13 @@
 
 			.description {
 				margin-left: 1.5rem;
+				width: 100%;
 
 				h2 {
 					font-weight: 500;
 					overflow: hidden;
-					// text-overflow: ellipsis;
-					// white-space: nowrap;
+					text-overflow: ellipsis;
+					white-space: nowrap;
 					max-width: 200px;
 				}
 
@@ -53,30 +54,35 @@
 				.actions {
 					display: flex;
 					align-items: center;
-					margin-top: 0.25rem;
-
-					.quantity {
-						width: 2.5rem;
-						text-align: center;
-						font-size: 0.875rem;
-						padding: 0.25rem;
-						border: 1px solid #d1d5db;
-						border-radius: 0.25rem;
-					}
-
-					> button {
-						width: 1.75rem;
-						height: 1.75rem;
+					justify-content: space-between;
+					.actionsQuantity {
 						display: flex;
 						align-items: center;
-						justify-content: center;
-						background-color: transparent;
-						border: none;
-						cursor: pointer;
+						margin-top: 0.25rem;
 
-						svg {
-							width: 1rem;
-							height: 1rem;
+						.quantity {
+							width: 2.5rem;
+							text-align: center;
+							font-size: 0.875rem;
+							padding: 0.25rem;
+							border: 1px solid #d1d5db;
+							border-radius: 0.25rem;
+						}
+
+						> button {
+							width: 1.75rem;
+							height: 1.75rem;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							background-color: transparent;
+							border: none;
+							cursor: pointer;
+
+							svg {
+								width: 1rem;
+								height: 1rem;
+							}
 						}
 					}
 				}
