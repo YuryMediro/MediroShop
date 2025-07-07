@@ -1,4 +1,3 @@
-// import { Link, useMatchRoute, useParams } from '@tanstack/react-router'
 import {
 	Album,
 	BarChart,
@@ -19,8 +18,6 @@ interface INavItem {
 }
 export const Navigation = () => {
 	const { storeId } = useParams()
-	// const { storeId } = useParams({ from: '/store/$storeId' })
-	// const matchRoute = useMatchRoute()
 	const matchRoute = useMatch({ path: '/store/:storeId/*' })
 	const routes: INavItem[] = [
 		{
@@ -57,17 +54,11 @@ export const Navigation = () => {
 	return (
 		<div className={s.wrapper}>
 			<div className={s.navigation}>
-				{/* <Link to={`/store/${storeId}/settings`}> Settings</Link> */}
 				{routes.map(route => {
-					// const isActive = matchRoute({
-					// 	to: route.link.replace(storeId, '$storeId'),
-					// 	params: { storeId },
-					// })
 					const isActive = matchRoute?.pathname === route.link
 					return (
 						<Link
 							to={route.link}
-							// params={{ storeId }}
 							key={route.title}
 							className={cn(s.route, {
 								[s.active]: isActive,

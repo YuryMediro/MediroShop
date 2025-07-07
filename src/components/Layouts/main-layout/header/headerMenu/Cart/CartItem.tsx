@@ -58,7 +58,6 @@ export const CartItem = ({ cart }: CartItemProps) => {
 							<Plus />
 						</Button>
 					</div>
-					<div>
 						<Button
 							variant='ghost'
 							size='icon'
@@ -67,6 +66,7 @@ export const CartItem = ({ cart }: CartItemProps) => {
 						>
 							<Trash2 />
 						</Button>
+					<div>
 					</div>
 				</div>
 			</div>

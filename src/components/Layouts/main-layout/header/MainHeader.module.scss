@@ -7,13 +7,28 @@
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	gap: 1rem;
 
+	> div {
+		display: none;
+		
+		@media (min-width: 1300px) {
+			display: flex;
+		}
+	}
+	.mobileMenu{
+		display: flex;
+
+		@media (min-width: 1300px) {
+			display: none;
+		}
+	}
 	.search {
 		margin-left: auto;
-		display: none;
-		width: 40%;
+		display: block;
+		width: 100%;
 
-		@media (min-width: 1024px) {
+		@media (min-width: 1300px) {
 			display: block;
+			width: 40%;
 		}
 	}
 }

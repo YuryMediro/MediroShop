@@ -1,0 +1,27 @@
+.trigger {
+	padding-right: 1rem;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+
+	svg {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
+	&:hover {
+		opacity: 0.75;
+		transition: opacity 0.2s ease;
+	}
+}
+
+.content {
+	padding: 0;
+	background-color: #ffffff;
+}
+
+@media (min-width: 1300) {
+	.trigger {
+		display: none;
+	}
+}

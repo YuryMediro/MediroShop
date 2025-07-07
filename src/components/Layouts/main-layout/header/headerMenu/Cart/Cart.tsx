@@ -18,7 +18,7 @@ export const Cart = () => {
 			</SheetTrigger>
 			<SheetContent className={s.cart}>
 				<h2 className={s.title}>Корзина товаров</h2>
-				<ScrollArea className='h-[84%]  '>
+				<ScrollArea className='max-h-[84%]'>
 					<div className={s.items}>
 						{carts.length === 0 ? (
 							<p className={s.empty}>Корзина пуста</p>
