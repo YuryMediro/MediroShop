@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')!).render(
 		<QueryClientProvider client={queryClient}>
 			<BrowserRouter>
 				<HelmetProvider>
-					<Toaster />
+					<Toaster />	
 					<App />
 				</HelmetProvider>
 			</BrowserRouter>
