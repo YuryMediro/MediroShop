@@ -81,6 +81,11 @@ export const CategoryForm = ({ category }: CreateCategoryProps) => {
 							name='title'
 							rules={{
 								required: 'Название обязательно',
+								validate: {
+									notOnlyWhitespace: value =>
+										value.trim().length > 0 ||
+										'Название не должно состоять только из пробелов',
+								},
 							}}
 							render={({ field }) => (
 								<FormItem>
@@ -106,6 +111,11 @@ export const CategoryForm = ({ category }: CreateCategoryProps) => {
 						name='description'
 						rules={{
 							required: 'Описание обязательно',
+							validate: {
+								notOnlyWhitespace: value =>
+									value.trim().length > 0 ||
+									'Описание не должно состоять только из пробелов',
+							},
 						}}
 						render={({ field }) => (
 							<FormItem>

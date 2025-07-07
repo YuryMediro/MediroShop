@@ -116,6 +116,11 @@ export const ProductForm = ({
 							name='title'
 							rules={{
 								required: 'Название обязательно',
+								validate: {
+									notOnlyWhitespace: value =>
+										value.trim().length > 0 ||
+										'Название не должно состоять только из пробелов',
+								},
 							}}
 							render={({ field }) => (
 								<FormItem>
@@ -230,6 +235,11 @@ export const ProductForm = ({
 						name='description'
 						rules={{
 							required: 'Описание обязательно',
+							validate: {
+									notOnlyWhitespace: value =>
+										value.trim().length > 0 ||
+										'Описание не должно состоять только из пробелов',
+								},
 						}}
 						render={({ field }) => (
 							<FormItem>

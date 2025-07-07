@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button'
 import { CartItem } from './CartItem'
 import useGetCart from '@/hooks/cart/useGetCartById'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import CountUp from 'react-countup'
 
 export const Cart = () => {
 	const { carts, totalPrice } = useGetCart()
@@ -31,12 +32,12 @@ export const Cart = () => {
 					<>
 						<div className={s.total}>
 							Итого к оплате:{' '}
-							{totalPrice?.toLocaleString('ru-RU', {
-								style: 'currency',
-								currency: 'RUB',
-								minimumFractionDigits: 0,
-								maximumFractionDigits: 0,
-							})}
+							<CountUp
+								end={totalPrice || 0}
+								separator=' '
+								suffix='  ₽'
+								key={totalPrice}
+							/>
 						</div>
 						<Button className={s.button} variant='primary'>
 							Перейти к оплате

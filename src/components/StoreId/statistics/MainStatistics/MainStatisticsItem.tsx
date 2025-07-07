@@ -21,7 +21,7 @@ export const MainStatisticsItem = ({ item }: MainStatisticsItemProps) => {
 					{item.id !== 1 ? (
 						<CountUp end={item.value} />
 					) : (
-						<CountUp end={item.value} separator=' ' prefix='₽ ' />
+						<CountUp end={item.value} separator=' ' suffix=' ₽ ' />
 					)}
 				</h2>
 			</CardContent>

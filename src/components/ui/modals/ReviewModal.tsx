@@ -80,7 +80,14 @@ export default function ReviewModal({
 						<FormField
 							control={form.control}
 							name='text'
-							rules={{ required: 'Текст обязателен' }}
+							rules={{
+								required: 'Текст обязателен',
+								validate: {
+									notOnlyWhitespace: value =>
+										value.trim().length > 0 ||
+										'Отзыв не должно состоять только из пробелов',
+								},
+							}}
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Текст</FormLabel>

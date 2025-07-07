@@ -60,7 +60,14 @@ export const Settings = () => {
 						<FormField
 							control={form.control}
 							name='title'
-							rules={{ required: 'Название обязательно' }}
+							rules={{
+								required: 'Название обязательно',
+								validate: {
+									notOnlyWhitespace: value =>
+										value.trim().length > 0 ||
+										'Название не должно состоять только из пробелов',
+								},
+							}}
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Название</FormLabel>
@@ -80,6 +87,13 @@ export const Settings = () => {
 					<FormField
 						control={form.control}
 						name='description'
+						rules={{
+							validate: {
+								notOnlyWhitespace: value =>
+									value.trim().length > 0 ||
+									'Название не должно состоять только из пробелов',
+							},
+						}}
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>Описание</FormLabel>

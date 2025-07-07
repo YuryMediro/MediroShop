@@ -53,7 +53,10 @@ export const MobileNavigationMenu = () => {
 								</Link>
 							) : (
 								<CreateStoreModal>
-									<Button variant='none'>Создать магазин</Button>
+									<div className={s.route}>
+										<Store />
+										<Button variant='none'>Создать магазин</Button>
+									</div>
 								</CreateStoreModal>
 							)}
 							<Link

@@ -31,7 +31,14 @@ export const AuthFields = ({
 				<FormField
 					control={form.control}
 					name='name'
-					rules={{ required: 'Имя обязательно' }}
+					rules={{
+						required: 'Имя обязательно',
+						validate: {
+							notOnlyWhitespace: value =>
+								value.trim().length > 0 ||
+								'Имя не должен состоять только из пробелов',
+						},
+					}}
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Имя пользователя</FormLabel>
@@ -76,6 +83,11 @@ export const AuthFields = ({
 				rules={{
 					required: 'Пароль обязателен',
 					minLength: { value: 6, message: 'Минимум 6 символов' },
+					validate: {
+						notOnlyWhitespace: value =>
+							value.trim().length > 0 ||
+							'Пароль не должен состоять только из пробелов',
+					},
 				}}
 				render={({ field }) => (
 					<FormItem>

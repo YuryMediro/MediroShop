@@ -54,6 +54,11 @@ export default function CreateStoreModal({
 							name='title'
 							rules={{
 								required: 'Название обязательно',
+								validate: {
+									notOnlyWhitespace: value =>
+										value.trim().length > 0 ||
+										'Название не должно состоять только из пробелов',
+								},
 							}}
 							render={({ field }) => (
 								<FormItem>
