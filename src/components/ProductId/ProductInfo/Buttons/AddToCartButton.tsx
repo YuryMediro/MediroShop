@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/Button'
 import { useAddToCart } from '@/hooks/cart/useAddToCart'
+import { useDeleteCartItem } from '@/hooks/cart/useDeleteCartItem'
+import useGetCart from '@/hooks/cart/useGetCartById'
 import { useProfile } from '@/hooks/useProfile'
 import type { IProduct } from '@/shared/types/product.interface'
 import toast from 'react-hot-toast'
@@ -14,25 +16,39 @@ export const AddToCartButton = ({ product }: AddToCartButtonProps) => {
 
 	const { addToCart, loadingAddToCart } = useAddToCart()
 
+	const { carts } = useGetCart()
+	const cartItem = carts.find(cart => cart.product.id === product.id)
+
+	const { deleteCartItem, loadingDeleteCartItem } = useDeleteCartItem(
+		cartItem?.id || ''
+	)
+
 	const { user } = useProfile()
-	
-	const handleAddToCart = () => {
+
+	const isInCart = !!cartItem
+
+	const handleAddOrRemoveFromCart = () => {
 		if (!user?.id) {
 			toast.error('Вы не авторизованы')
 			route('/auth')
 			return
 		}
-		addToCart({ productId: product.id })
+		if (isInCart) {
+			deleteCartItem()
+		} else {
+			addToCart({ productId: product.id })
+		}
 	}
+	
 	return (
 		<Button
-			onClick={handleAddToCart}
-			disabled={loadingAddToCart}
+			onClick={handleAddOrRemoveFromCart}
+			disabled={loadingAddToCart || loadingDeleteCartItem}
 			variant='primary'
 			size='lg'
 			className='w-full'
 		>
-			Добавить в корзину
+			{isInCart ? 'Удалить из корзины' : 'Добавить в корзину'}
 		</Button>
 	)
 }

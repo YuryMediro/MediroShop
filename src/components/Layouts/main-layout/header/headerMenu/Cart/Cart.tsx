@@ -6,9 +6,12 @@ import { CartItem } from './CartItem'
 import useGetCart from '@/hooks/cart/useGetCartById'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import CountUp from 'react-countup'
+import { useCreatePayment } from '@/hooks/order/useCreatePayment'
 
 export const Cart = () => {
 	const { carts, totalPrice } = useGetCart()
+
+	const { createPayment, isLoadingPayment } = useCreatePayment()
 
 	return (
 		<Sheet>
@@ -39,7 +42,12 @@ export const Cart = () => {
 								key={totalPrice}
 							/>
 						</div>
-						<Button className={s.button} variant='primary'>
+						<Button
+							className={s.button}
+							variant='primary'
+							disabled={isLoadingPayment}
+							onClick={() => createPayment()}
+						>
 							Перейти к оплате
 						</Button>
 					</>
