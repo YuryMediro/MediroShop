@@ -1,22 +1,60 @@
-import { storeService } from '@/services/store.service'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, type UseMutationResult } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
+import { productService } from '@/services/product.service'
+import { categoryService } from '@/services/category.service'
+import { colorService } from '@/services/color.service'
+import { storeService } from '@/services/store.service'
 import { useNavigate } from 'react-router-dom'
+import { reviewService } from '@/services/review.service'
+import { cartService } from '@/services/cart.service'
 
-export default function useDeleteStore(storeId: string) {
+export const useDeleteStore = (
+	storeId: string
+): UseMutationResult<void, Error, void> => {
 	const route = useNavigate()
+	return useMutation({
+		mutationFn: async () => {
+			const [products, categories, colors, reviews] = await Promise.all([
+				productService.getByStoreId(storeId),
+				categoryService.getByStoreId(storeId),
+				colorService.getByStoreId(storeId),
+				reviewService.getByStoreId(storeId),
+			])
 
-	const { mutate: deleteStore, isPending: isLoadingDelete } = useMutation({
-		mutationKey: ['delete store'],
-		mutationFn: () => storeService.delete(storeId),
-		onSuccess() {
-			toast.success('Магазин удален')
+			await Promise.all(
+				products.map(async product => {
+					try {
+						await cartService.deleteCartItemByProductId(product.id)
+					} catch (error) {
+						console.warn(
+							`Корзина для товара ${product.id} не найдена или не удалена`,
+							error
+						)
+					}
+				})
+			)
+
+			await Promise.all(reviews.map(review => reviewService.delete(review.id)))
+
+			await Promise.all(
+				products.map(product => productService.delete(product.id))
+			)
+
+			await Promise.all(
+				categories.map(category => categoryService.delete(category.id))
+			)
+
+			await Promise.all(colors.map(color => colorService.delete(color.id)))
+
+			await storeService.delete(storeId)
+		},
+		onSuccess: () => {
+			toast.success('Магазин и связанные данные успешно удалены')
 			route('/')
 		},
-		onError() {
-			toast.error('Ошибка при удаление магазина')
+		onError: error => {
+			toast.error('Ошибка при удалении магазина или связанных данных')
+			console.error(error)
 		},
 	})
-
-	return { deleteStore, isLoadingDelete }
 }

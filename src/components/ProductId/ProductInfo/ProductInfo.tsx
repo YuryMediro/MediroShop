@@ -3,6 +3,7 @@ import s from './ProductInfo.module.scss'
 import { getReviewEnding } from '@/utils/review/getReviewEnding'
 import { FavoriteButton } from './Buttons/FavoriteButton'
 import { AddToCartButton } from './Buttons/AddToCartButton'
+import { Link } from 'react-router-dom'
 
 interface ProductInfoProps {
 	product: IProduct
@@ -39,9 +40,11 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
 				/>
 			</div>
 			<div className={s.label}>
-				<h3>
-					Категория: <span>{product.category.title}</span>
-				</h3>
+				<Link to={`/category/${product.category.id}`}>
+					<h3>
+						Категория: <span>{product.category.title}</span>
+					</h3>
+				</Link>
 			</div>
 			<div className={s.label}>
 				<h3>Средний рейтинг: </h3>

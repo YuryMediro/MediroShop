@@ -1,4 +1,3 @@
-import useDeleteStore from '@/hooks/stores/useDeleteStore'
 import useUpdateStore from '@/hooks/stores/useUpdateStore'
 import type { IStoreEdit } from '@/shared/types/store.interface'
 import { useForm, type SubmitHandler } from 'react-hook-form'
@@ -17,11 +16,12 @@ import {
 import { Input } from '@/components/ui/form-elements/Input'
 import { Textarea } from '@/components/ui/textarea'
 import { useParams } from 'react-router-dom'
+import { useDeleteStore } from '@/hooks/stores/useDeleteStore'
 
 export const Settings = () => {
 	const { storeId } = useParams()
 	const { store, updateStore, isLoadingUpdate } = useUpdateStore(storeId!)
-	const { deleteStore, isLoadingDelete } = useDeleteStore(storeId!)
+	const deleteStore = useDeleteStore(storeId!)
 
 	const form = useForm<IStoreEdit>({
 		mode: 'onChange',
@@ -42,12 +42,12 @@ export const Settings = () => {
 					<p className={s.description}>Управление настройками магазина</p>
 				</div>
 
-				<ConfirmModal handleClick={() => deleteStore()}>
+				<ConfirmModal handleClick={() => deleteStore.mutate()}>
 					<Button
 						size='icon'
 						type='button'
 						variant='primary'
-						disabled={isLoadingDelete}
+						disabled={deleteStore.isPending}
 					>
 						<Trash2 className='size-5' />
 					</Button>

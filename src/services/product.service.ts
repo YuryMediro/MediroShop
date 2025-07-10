@@ -10,7 +10,7 @@ class ProductService {
 			params: searchTerm
 				? {
 						searchTerm,
-				  }
+					}
 				: {},
 		})
 		return data || []

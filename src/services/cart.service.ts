@@ -36,6 +36,14 @@ class CartService {
 		})
 		return { data }
 	}
+
+	async deleteCartItemByProductId(productId: string) {
+		const { data } = await axiosWithAuth({
+			url: API_URL.carts(`/by-product/${productId}`),
+			method: 'DELETE',
+		})
+		return { data }
+	}
 }
 
 export const cartService = new CartService()
