@@ -19,9 +19,13 @@ export const MainStatisticsItem = ({ item }: MainStatisticsItemProps) => {
 			<CardContent className={s.content}>
 				<h2>
 					{item.id !== 1 ? (
-						<CountUp end={item.value} />
+						item.id === 4 ? (
+							<CountUp end={item.value} decimals={1} decimal='.' />
+						) : (
+							<CountUp end={item.value} />
+						)
 					) : (
-						<CountUp end={item.value} separator=' ' suffix=' ₽ ' />
+						<CountUp end={item.value} separator=' ' suffix=' ₽' />
 					)}
 				</h2>
 			</CardContent>

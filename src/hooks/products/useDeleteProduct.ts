@@ -1,27 +1,36 @@
+import { cartService } from '@/services/cart.service'
 import { productService } from '@/services/product.service'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation, type UseMutationResult } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
-export default function useDeleteProduct(productId: string, storeId: string) {
+export const useDeleteProduct = (
+	storeId: string
+): UseMutationResult<void, Error, void> => {
 	const route = useNavigate()
+	return useMutation({
+		mutationFn: async () => {
+			const [products] = await Promise.all([
+				productService.getByStoreId(storeId),
+			])
 
-	const queryClient = useQueryClient()
+			await Promise.all(
+				products.map(async product => {
+					await cartService.deleteCartItemByProductId(product.id)
+				})
+			)
+			await Promise.all(
+				products.map(product => productService.delete(product.id))
+			)
+		},
 
-	const { mutate: deleteProduct, isPending: isLoadingDelete } = useMutation({
-		mutationKey: ['delete product'],
-		mutationFn: () => productService.delete(productId),
-		onSuccess() {
-			queryClient.invalidateQueries({
-				queryKey: ['get products for store dashboard'],
-			})
-			toast.success('Товар удален')
+		onSuccess: () => {
+			toast.success('Товар успешно удален')
 			route(`/store/${storeId}/products`)
 		},
-		onError() {
-			toast.error('Ошибка при удаление товара')
+		onError: error => {
+			toast.error('Ошибка при удалении товара')
+			console.error(error)
 		},
 	})
-
-	return { deleteProduct, isLoadingDelete }
 }

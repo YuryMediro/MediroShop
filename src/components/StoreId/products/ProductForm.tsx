@@ -6,7 +6,6 @@ import useCreateProduct from '@/hooks/products/useCreateProduct'
 import { useParams } from 'react-router-dom'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import useUpdateProduct from '@/hooks/products/useUpdateProduct'
-import useDeleteProduct from '@/hooks/products/useDeleteProduct'
 import ConfirmModal from '@/components/ui/modals/ConfirmModal'
 import { Button } from '@/components/ui/Button'
 import { Trash2 } from 'lucide-react'
@@ -29,6 +28,7 @@ import {
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { ImageUpload } from '@/components/ui/imageUpload/ImageUpload'
+import { useDeleteProduct } from '@/hooks/products/useDeleteProduct'
 
 interface CreateProductProps {
 	product?: IProduct | null
@@ -44,7 +44,7 @@ export const ProductForm = ({
 	const { storeId } = useParams()
 	const { createProduct, isLoadingCreate } = useCreateProduct(storeId!)
 	const { updateProduct, isLoadingUpdate } = useUpdateProduct(product?.id!)
-	const { deleteProduct, isLoadingDelete } = useDeleteProduct(product?.id!, storeId!)
+	const deleteProduct = useDeleteProduct(storeId!)
 
 	const form = useForm<IProductEdit>({
 		mode: 'onChange',
@@ -76,12 +76,12 @@ export const ProductForm = ({
 					</p>
 				</div>
 				{product && (
-					<ConfirmModal handleClick={() => deleteProduct()}>
+					<ConfirmModal handleClick={() => deleteProduct.mutate()}>
 						<Button
 							type='submit'
 							size='icon'
 							variant='primary'
-							disabled={isLoadingDelete}
+							disabled={deleteProduct.isPending}
 						>
 							<Trash2 className='size-4' />
 						</Button>

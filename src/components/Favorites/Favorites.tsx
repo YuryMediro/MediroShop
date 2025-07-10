@@ -4,7 +4,6 @@ import { LoaderStatistics } from '../StoreId/statistics/MainStatistics/LoaderSta
 
 export const Favorites = () => {
 	const { user } = useProfile()
-	console.log(user?.favorites )
 
 	if (!user) {
 		return (

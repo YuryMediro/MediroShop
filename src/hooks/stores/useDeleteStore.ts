@@ -23,16 +23,10 @@ export const useDeleteStore = (
 
 			await Promise.all(
 				products.map(async product => {
-					try {
-						await cartService.deleteCartItemByProductId(product.id)
-					} catch (error) {
-						console.warn(
-							`Корзина для товара ${product.id} не найдена или не удалена`,
-							error
-						)
-					}
+					await cartService.deleteCartItemByProductId(product.id)
 				})
 			)
+			//Promise.all позволяет запустить несколько асинхронных операций одновременно и дождаться их завершения.
 
 			await Promise.all(reviews.map(review => reviewService.delete(review.id)))
 
