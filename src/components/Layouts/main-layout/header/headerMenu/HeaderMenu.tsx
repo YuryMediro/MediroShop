@@ -10,6 +10,7 @@ import noImage from '@assets/no-user-image.png'
 
 export const HeaderMenu = () => {
 	const { user, isLoading } = useProfile()
+
 	return (
 		<>
 			<div className={s.wrapper}>
@@ -22,7 +23,9 @@ export const HeaderMenu = () => {
 				) : user ? (
 					<>
 						<Link to='/favorites'>
-							<Button variant='ghost'>Избранное</Button>
+							<Button variant='ghost'>
+								Избранное ({user.favorites.length})
+							</Button>
 						</Link>
 						{user.stores.length ? (
 							<Link to={`/store/${user.stores[0].id}`}>

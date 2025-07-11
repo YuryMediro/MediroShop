@@ -17,7 +17,7 @@ export const Cart = () => {
 		<Sheet>
 			<SheetTrigger asChild>
 				<Button type='button' variant='ghost'>
-					Корзина
+					Корзина ({carts.length})
 				</Button>
 			</SheetTrigger>
 			<SheetContent className={s.cart}>

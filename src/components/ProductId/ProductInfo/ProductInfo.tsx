@@ -4,20 +4,13 @@ import { getReviewEnding } from '@/utils/review/getReviewEnding'
 import { FavoriteButton } from './Buttons/FavoriteButton'
 import { AddToCartButton } from './Buttons/AddToCartButton'
 import { Link } from 'react-router-dom'
+import { averageRating } from '@/utils/review/averageRating'
 
 interface ProductInfoProps {
 	product: IProduct
 }
 
 export const ProductInfo = ({ product }: ProductInfoProps) => {
-	const rating =
-		product.reviews.length > 0
-			? (
-					product.reviews.reduce((acc, item) => acc + item.rating, 0) /
-					product.reviews.length
-				).toFixed(1)
-			: '0.0'
-
 	return (
 		<div className={s.wrapper}>
 			<h1 className={s.title}>{product.title}</h1>
@@ -49,7 +42,8 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
 			<div className={s.label}>
 				<h3>Средний рейтинг: </h3>
 				<div className='text-sm'>
-					⭐ {rating} | {getReviewEnding(product.reviews.length)}
+					⭐ {averageRating(product)} |{' '}
+					{getReviewEnding(product.reviews.length)}
 				</div>
 			</div>
 			<hr />

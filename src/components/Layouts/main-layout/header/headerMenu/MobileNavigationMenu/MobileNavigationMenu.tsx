@@ -66,7 +66,9 @@ export const MobileNavigationMenu = () => {
 								})}
 							>
 								<BookHeart />
-								<Button variant='none'>Избранное</Button>
+								<Button variant='none'>
+									Избранное ({user.favorites.length})
+								</Button>
 							</Link>
 						</>
 					) : (
