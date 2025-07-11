@@ -19,7 +19,9 @@ export default function useDeleteColor(colorId: string, storeId: string) {
 			route(`/store/${storeId}/colors`)
 		},
 		onError() {
-			toast.error('Ошибка при удаление цвета')
+			toast.error(
+				'Невозможно удалить цвет, так как он используется в продуктах'
+			)
 		},
 	})
 

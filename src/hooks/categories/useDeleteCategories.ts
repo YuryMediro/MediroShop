@@ -19,7 +19,9 @@ export default function useDeleteCategory(categoryId: string, storeId: string) {
 			route(`/store/${storeId}/categories`)
 		},
 		onError() {
-			toast.error('Ошибка при удаление категории')
+			toast.error(
+				'Невозможно удалить категорию, так как она используется в продуктах'
+			)
 		},
 	})
 
