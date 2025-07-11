@@ -44,7 +44,7 @@ export const ProductForm = ({
 	const { storeId } = useParams()
 	const { createProduct, isLoadingCreate } = useCreateProduct(storeId!)
 	const { updateProduct, isLoadingUpdate } = useUpdateProduct(product?.id!)
-	const deleteProduct = useDeleteProduct(storeId!)
+	const deleteProduct = useDeleteProduct(storeId!, product?.id!)
 
 	const form = useForm<IProductEdit>({
 		mode: 'onChange',
@@ -236,10 +236,10 @@ export const ProductForm = ({
 						rules={{
 							required: 'Описание обязательно',
 							validate: {
-									notOnlyWhitespace: value =>
-										value.trim().length > 0 ||
-										'Описание не должно состоять только из пробелов',
-								},
+								notOnlyWhitespace: value =>
+									value.trim().length > 0 ||
+									'Описание не должно состоять только из пробелов',
+							},
 						}}
 						render={({ field }) => (
 							<FormItem>

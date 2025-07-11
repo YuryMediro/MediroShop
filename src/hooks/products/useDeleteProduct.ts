@@ -5,7 +5,8 @@ import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
 export const useDeleteProduct = (
-	storeId: string
+	storeId: string,
+	productId: string
 ): UseMutationResult<void, Error, void> => {
 	const route = useNavigate()
 	return useMutation({
@@ -19,9 +20,7 @@ export const useDeleteProduct = (
 					await cartService.deleteCartItemByProductId(product.id)
 				})
 			)
-			await Promise.all(
-				products.map(product => productService.delete(product.id))
-			)
+			await productService.delete(productId)
 		},
 
 		onSuccess: () => {

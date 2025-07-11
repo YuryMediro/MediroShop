@@ -5,7 +5,6 @@ import { categoryService } from '@/services/category.service'
 import { colorService } from '@/services/color.service'
 import { storeService } from '@/services/store.service'
 import { useNavigate } from 'react-router-dom'
-import { reviewService } from '@/services/review.service'
 import { cartService } from '@/services/cart.service'
 
 export const useDeleteStore = (
@@ -14,11 +13,10 @@ export const useDeleteStore = (
 	const route = useNavigate()
 	return useMutation({
 		mutationFn: async () => {
-			const [products, categories, colors, reviews] = await Promise.all([
+			const [products, categories, colors] = await Promise.all([
 				productService.getByStoreId(storeId),
 				categoryService.getByStoreId(storeId),
 				colorService.getByStoreId(storeId),
-				reviewService.getByStoreId(storeId),
 			])
 
 			await Promise.all(
@@ -27,8 +25,6 @@ export const useDeleteStore = (
 				})
 			)
 			//Promise.all позволяет запустить несколько асинхронных операций одновременно и дождаться их завершения.
-
-			await Promise.all(reviews.map(review => reviewService.delete(review.id)))
 
 			await Promise.all(
 				products.map(product => productService.delete(product.id))
