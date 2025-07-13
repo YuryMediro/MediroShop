@@ -1,16 +1,16 @@
 import {
 	Album,
-	DollarSign,
 	FolderKanban,
 	Star,
 	type LucideIcon,
+	RussianRuble,
 } from 'lucide-react'
 
 export function getIconStatistics(id: number): LucideIcon {
 	switch (id) {
 		case 1:
 		default:
-			return DollarSign
+			return RussianRuble
 		case 2:
 			return FolderKanban
 		case 3:

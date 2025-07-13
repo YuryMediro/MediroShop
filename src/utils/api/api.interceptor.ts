@@ -4,7 +4,6 @@ import { SERVER_URL } from '@config/api.config'
 import { getAccessToken, removeFromStorage } from '@/services/auth/auth-token.service'
 import { authService } from '@/services/auth/auth.service'
 
-
 const options: CreateAxiosDefaults = {
 	baseURL: SERVER_URL,
 	headers: getContentType(),

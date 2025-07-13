@@ -33,7 +33,6 @@ export default function ReviewModal({
 	const [isOpen, setIsOpen] = useState(false)
 
 	const { createReview, isLoadingCreate } = useCreateReviews(storeId)
-	console.log(createReview)
 	const form = useForm<IReviewInput>({
 		mode: 'onChange',
 	})

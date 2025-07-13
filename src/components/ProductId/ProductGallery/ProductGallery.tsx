@@ -25,7 +25,7 @@ export const ProductGallery = ({ product }: ProductGalleryProps) => {
 						onClick={() => setCurrentImage(index)}
 						className={cn(s.item, { [s.active]: currentImage === index })}
 					>
-						<img src={image} alt={product.title} width={100} height={100} />
+						<img src={image} alt={product.title} width={100} height={100} className='cursor-pointer' />
 					</button>
 				))}
 			</div>

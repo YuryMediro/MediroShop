@@ -7,6 +7,7 @@
 	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
+	user-select: none;
 
 	color-scheme: light dark;
 	color: #000000;
@@ -50,7 +51,6 @@
 	--sidebar-border: oklch(0.922 0 0);
 	--sidebar-ring: oklch(0.708 0 0);
 }
-
 
 @theme inline {
 	--radius-sm: calc(var(--radius) - 4px);

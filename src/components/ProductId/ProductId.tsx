@@ -23,7 +23,7 @@ export const ProductId = () => {
 
 	if (!product || !similarProduct) {
 		return (
-			<div className='flex justify-center h-screen '>
+			<div className='flex justify-center h-screen items-center'>
 				<LoaderStatistics />
 			</div>
 		)

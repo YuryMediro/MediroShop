@@ -3,6 +3,8 @@ import logo from '@/assets/logo.svg'
 import s from './Logo.module.scss'
 import { Link } from 'react-router-dom'
 
+
+
 export const Logo = () => {
 	return (
 		<Link to='/' className={s.logo}>

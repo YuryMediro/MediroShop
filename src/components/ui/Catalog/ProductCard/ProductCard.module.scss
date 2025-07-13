@@ -1,11 +1,16 @@
 .card {
 	background-color: #fff;
-
 	display: flex;
 	flex-direction: column;
 
-	img {
-		border-radius: 0.5rem;
+	.linkImg {
+		transition: all 0.2s ease-in-out;
+		&:hover {
+			transform: scale(1.03);
+		}
+		img {
+			border-radius: 0.5rem;
+		}
 	}
 
 	.title {
@@ -15,6 +20,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: wrap;
+		cursor: pointer;
 	}
 
 	.category {

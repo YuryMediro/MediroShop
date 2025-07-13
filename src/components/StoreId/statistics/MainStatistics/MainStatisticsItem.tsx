@@ -20,7 +20,7 @@ export const MainStatisticsItem = ({ item }: MainStatisticsItemProps) => {
 				<h2>
 					{item.id !== 1 ? (
 						item.id === 4 ? (
-							<CountUp end={item.value} decimals={1} decimal='.' />
+							<CountUp end={item.value }decimals={1} decimal='.' />
 						) : (
 							<CountUp end={item.value} />
 						)
