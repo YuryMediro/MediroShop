@@ -1,4 +1,4 @@
-import { Button } from '../ui/Button'
+import { Button } from '@components/ui/Button'
 import s from './Auth.module.scss'
 import { FcGoogle } from 'react-icons/fc'
 import { FaYandex } from 'react-icons/fa'
