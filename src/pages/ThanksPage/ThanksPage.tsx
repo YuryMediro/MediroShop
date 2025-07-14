@@ -1,7 +1,7 @@
 import { SITE_DESCRIPTION, SITE_NAME } from '@/constants/seo.constants'
 import { Helmet } from 'react-helmet-async'
 import s from '../../components/Home/HomeDescription/HomeDescription.module.scss'
-import { Button } from '@/components/ui/Button'
+import { Button } from '../../components/ui/Button'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
