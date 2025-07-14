@@ -4,9 +4,11 @@ import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
-	plugins: [react(), tailwindcss()],
+	plugins: [
+		react(),
+		tailwindcss(),
+	],
 	resolve: {
-		extensions: ['.ts', '.tsx', '.js', '.jsx'],
 		alias: {
 			'@': path.resolve(__dirname, './src'),
 			'@components': path.resolve(__dirname, './src/components'),

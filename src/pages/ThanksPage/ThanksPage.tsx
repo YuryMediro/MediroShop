@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import s from '../../components/Home/HomeDescription/HomeDescription.module.scss'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Button } from '@/components/ui/Button.tsx'
+import { Button } from '@/components/ui/Button'
 
 export const ThanksPage = () => {
 	return (
