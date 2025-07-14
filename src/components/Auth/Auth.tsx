@@ -11,7 +11,7 @@ import {
 import { Form } from '../ui/form-elements/Form'
 import { useState } from 'react'
 import { useAuthForm } from '@/hooks/useAuthForm'
-import { Button } from '../ui/Button'
+import { Button } from '@components/ui/Button'
 import { AuthFields } from './AuthFields'
 import { SocialAuth } from './SocialAuth'
 
