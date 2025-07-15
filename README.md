@@ -30,7 +30,7 @@
 
 <img width="1912" height="1034" alt="Image" src="https://github.com/user-attachments/assets/996ef9b9-9999-4bf3-9215-61871fb35c97" />
 
-<img width="1915" height="1040" alt="Image" src="https://github.com/user-attachments/assets/88f1451b-d4a1-44be-9809-ec1b83c1c3ea" />
+<img width="1915" height="1033" alt="Image" src="https://github.com/user-attachments/assets/8e9ee78d-511b-4b40-8687-27c5bc465a10" />
 
 <img width="368" height="205" alt="Image" src="https://github.com/user-attachments/assets/430100e5-5bf3-475c-93b9-4d54389a10ca" />
 
