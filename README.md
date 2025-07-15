@@ -1,7 +1,5 @@
 # React + TypeScript + Vite
 
-<img width="639" height="1793" alt="Image" src="https://github.com/user-attachments/assets/b59c12c8-e54c-4108-a04e-f8a06df9a8e2" />
-
 <img width="1910" height="1038" alt="Image" src="https://github.com/user-attachments/assets/a7fd0008-60c6-4374-a1e1-500f0d53e0ca" />
 
 <img width="1917" height="1038" alt="Image" src="https://github.com/user-attachments/assets/ac284c62-affb-4232-a753-e5d81ec97ec8" />
@@ -61,3 +59,5 @@
 <img width="1914" height="534" alt="Image" src="https://github.com/user-attachments/assets/a69cb597-21e8-4513-b874-7d4ebbeb4565" />
 
 <img width="1644" height="864" alt="Image" src="https://github.com/user-attachments/assets/60800781-066b-4311-9930-8d4c9f752355" />
+
+<img width="639" height="1793" alt="Image" src="https://github.com/user-attachments/assets/b59c12c8-e54c-4108-a04e-f8a06df9a8e2" />
