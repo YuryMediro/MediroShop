@@ -18,6 +18,14 @@ YOOKASSA_SECRET_KEY=your_yookassa_secret_key
 SERVER_URL=http://localhost:5000
 SERVER_DOMAIN=localhost
 ```
+Frontend (/client-side)
+
+```env
+VITE_APP_ENV=development
+VITE_APP_URL=http://localhost:5173
+VITE_APP_DOMAIN=localhost
+VITE_SERVER_URL=http://localhost:5000
+```
 
 <img width="1914" height="1037" alt="Image" src="https://github.com/user-attachments/assets/85fa6e10-9cc7-49a0-8e68-00f5997e56c2" />
 
