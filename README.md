@@ -1,5 +1,21 @@
 <h1 align="center">E-Commerce Store 🛒</h1>
 
+
+
+```env
+PORT=5000
+MONGODB_URL=your_mongodb_connection_string
+UPSTASH_REDIS_URL=your_upstash_redis_url
+ACCESS_TOKEN_SECRET=your_jwt_access_token_secret
+REFRESH_TOKEN_SECRET=your_jwt_refresh_token_secret
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+STRIPE_SECRET_KEY=your_stripe_secret_key
+CLIENT_URL=http://localhost:5173
+NODE_ENV=development
+```
+
 <img width="1914" height="1037" alt="Image" src="https://github.com/user-attachments/assets/85fa6e10-9cc7-49a0-8e68-00f5997e56c2" />
 
 <img width="1916" height="1038" alt="Image" src="https://github.com/user-attachments/assets/ba51ded4-d276-41df-b2af-685b9a3ee46d" />
