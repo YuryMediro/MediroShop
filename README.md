@@ -31,7 +31,7 @@ VITE_SERVER_URL=http://localhost:5000
 ```env
 cd server-side
 npm install
-npm run dev
+npm run start
 ```
 <h2>💻 Run the Frontend</h2>
 
