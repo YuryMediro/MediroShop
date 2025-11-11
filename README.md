@@ -26,7 +26,20 @@ VITE_APP_URL=http://localhost:5173
 VITE_APP_DOMAIN=localhost
 VITE_SERVER_URL=http://localhost:5000
 ```
+<h2>🔧 Run the Backend</h2>
 
+```env
+cd server-side
+npm install
+npm run dev
+```
+<h2>💻 Run the Frontend</h2>
+
+```env
+cd client-side
+npm install
+npm run dev
+```
 <img width="1914" height="1037" alt="Image" src="https://github.com/user-attachments/assets/85fa6e10-9cc7-49a0-8e68-00f5997e56c2" />
 
 <img width="1916" height="1038" alt="Image" src="https://github.com/user-attachments/assets/ba51ded4-d276-41df-b2af-685b9a3ee46d" />
