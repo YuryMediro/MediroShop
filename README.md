@@ -1,4 +1,5 @@
 <h1 align="center">E-Commerce Store 🛒</h1>
+<script>sdfsdf</script>
 <img width="1914" height="1037" alt="Image" src="https://github.com/user-attachments/assets/85fa6e10-9cc7-49a0-8e68-00f5997e56c2" />
 
 <img width="1916" height="1038" alt="Image" src="https://github.com/user-attachments/assets/ba51ded4-d276-41df-b2af-685b9a3ee46d" />
