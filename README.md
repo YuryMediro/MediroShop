@@ -1,7 +1,6 @@
 <h1 align="center">E-Commerce Store 🛒</h1>
 
-
-
+<h2>🧪 .env Setup</h2>
 ```env
 PORT=5000
 MONGODB_URL=your_mongodb_connection_string
