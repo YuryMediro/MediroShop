@@ -1,5 +1,7 @@
 <h1 align="center">E-Commerce Store 🛒</h1>
 
+<img width="1902" height="1038" alt="Image" src="https://github.com/user-attachments/assets/cc886bb7-cf2d-4ece-9699-02e6d2b4acc6" />
+
 <h2>🧪 .env Setup</h2>
 Backend (/server-side)
 
@@ -22,8 +24,6 @@ NODE_ENV=development
 <img width="1916" height="1038" alt="Image" src="https://github.com/user-attachments/assets/ba51ded4-d276-41df-b2af-685b9a3ee46d" />
 
 <img width="1288" height="1035" alt="Image" src="https://github.com/user-attachments/assets/a8eb2225-9ff6-4c47-b4cd-6da32d37ecee" />
-
-<img width="1902" height="1038" alt="Image" src="https://github.com/user-attachments/assets/cc886bb7-cf2d-4ece-9699-02e6d2b4acc6" />
 
 <img width="1917" height="1040" alt="Image" src="https://github.com/user-attachments/assets/c9751fac-964e-4d86-ab98-f616767692be" />
 
