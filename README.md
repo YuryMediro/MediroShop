@@ -1,8 +1,4 @@
 <h1 align="center">E-Commerce Store 🛒</h1>
-```
-ываыва=ываыва
-```
-
 
 <img width="1914" height="1037" alt="Image" src="https://github.com/user-attachments/assets/85fa6e10-9cc7-49a0-8e68-00f5997e56c2" />
 
